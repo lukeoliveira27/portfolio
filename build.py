@@ -714,7 +714,7 @@ def home():
 <main id="topo">
 
   <section class="hero wrap">
-    <p class="eyebrow">{e(('Creative Analyst no Talenses Group, São Paulo', 'Creative Analyst at Talenses Group, São Paulo'))}</p>
+    <p class="eyebrow">{e(('Creative Analyst | São Paulo', 'Creative Analyst | São Paulo'))}</p>
     <h1 class="hero__title">{L(hero_title)}</h1>
     <div class="hero__foot">
       <p class="hero__lead">{e(lead)}</p>
