@@ -495,3 +495,33 @@ em { font-style: italic; }
   .cf-grid:has(> .cf--third) > .cf { flex: 0 0 68%; scroll-snap-align: start; }
   .cf-grid:has(> .cf--third) img { height: 300px; object-fit: cover; }
 }
+
+/* ---------- CTA DO FLOWBOARD (cores da marca do produto: grafite, azul-céu, bege; laranja só no logo) ---------- */
+.fbcta { background: #26323c; color: #f6f4ef; overflow: hidden; margin-top: clamp(56px, 7vw, 100px); }
+.page-case .fbcta { margin-top: clamp(72px, 10vw, 140px); }
+.fbcta__in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 360px); gap: clamp(32px, 6vw, 96px); align-items: end; }
+.fbcta__text { padding-block: clamp(48px, 6vw, 88px); }
+.fbcta__logo { width: 186px; height: auto; margin-bottom: 36px; }
+.fbcta__title { margin: 0 0 18px; max-width: 16ch; font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 5.4vw, 76px); line-height: 1; letter-spacing: -.02em; }
+.fbcta__lead { margin: 0 0 32px; max-width: 52ch; font-size: clamp(16px, 1.4vw, 19px); color: #cfd6dc; }
+.fbcta__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 28px; }
+.fbcta__btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; background: #cfe0ec; color: #26323c;
+  font-weight: 600; text-decoration: none; border-radius: 3px; transition: background .2s;
+}
+.fbcta__btn:hover { background: #f6f4ef; }
+.fbcta__link { color: #f6f4ef; font-weight: 500; text-decoration: underline; text-underline-offset: 4px; padding-block: 8px; }
+.fbcta__link:hover { color: #cfe0ec; }
+.fbcta__note { margin: 18px 0 0; font-size: 14px; color: #9aa7b2; }
+.fbcta__shot { align-self: end; height: clamp(360px, 38vw, 520px); position: relative; }
+.fbcta__shot img {
+  position: absolute; left: 50%; top: clamp(40px, 5vw, 72px); width: min(100%, 300px); height: auto; transform: translateX(-50%);
+  border: 8px solid #111; border-bottom: 0; border-radius: 34px 34px 0 0;
+}
+@media (max-width: 760px) {
+  .fbcta__in { grid-template-columns: 1fr; gap: 0; }
+  .fbcta__text { padding-bottom: 32px; }
+  .fbcta__shot { height: 300px; }
+  .fbcta__shot img { width: 240px; top: 0; }
+  .fbcta__btn { flex: 1 1 auto; justify-content: center; }
+}

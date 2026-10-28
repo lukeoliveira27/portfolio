@@ -595,6 +595,33 @@ TIMELINE = [
 ]
 
 
+FB_URL = "https://useflowboard.com/?utm_source=portfolio&utm_medium=referral&utm_campaign=portfolio-lucas"
+FB_PLANS = "https://useflowboard.com/planos?utm_source=portfolio&utm_medium=referral&utm_campaign=portfolio-lucas"
+
+
+def fb_cta(p):
+    """Bloco de chamada para o FlowBoard, nas cores da marca do produto."""
+    return f"""
+  <section class="fbcta" aria-labelledby="fbcta-title">
+    <div class="wrap fbcta__in">
+      <div class="fbcta__text">
+        <img class="fbcta__logo" src="{p}assets/img/flowboard-logo.svg" alt="FlowBoard" width="279" height="44">
+        <h2 id="fbcta-title" class="fbcta__title">{e(('Use FlowBoard nos seus dias úteis.', 'FlowBoard: useful on every working day.'))}</h2>
+        <p class="fbcta__lead">{e(('Board, daily, calendário editorial e os pedidos do time num lugar só. Feito por quem trabalha com criação e comunicação, para times que vivem de prazo.', 'Board, daily, editorial calendar and team requests in one place. Made by someone who works in creative and communications, for teams that live by deadlines.'))}</p>
+        <div class="fbcta__actions">
+          <a class="fbcta__btn" href="{FB_URL}" target="_blank" rel="noopener">{e(('Começar grátis', 'Start for free'))} ↗</a>
+          <a class="fbcta__link" href="{FB_PLANS}" target="_blank" rel="noopener">{e(('Ver planos', 'See plans'))}</a>
+        </div>
+        <p class="fbcta__note">{e(('Sem cartão de crédito. Nos primeiros 14 dias, o plano Agência fica liberado.', 'No credit card. The Agency plan is unlocked for the first 14 days.'))}</p>
+      </div>
+      <div class="fbcta__shot" aria-hidden="true">
+        <img src="{p}assets/img/fb-mob-board.webp" alt="" loading="lazy" width="900" height="1947">
+      </div>
+    </div>
+  </section>
+"""
+
+
 def home():
     p = "" if LANG == "pt" else "../"
     def wiggle(txt):
@@ -709,7 +736,7 @@ def home():
     </header>
 {cases_html}
   </section>
-
+{fb_cta(p)}
   <section id="motion" class="motion">
     <div class="wrap">
       <header class="section__head section__head--row">
@@ -878,6 +905,7 @@ def case_page(idx):
     <div class="cf-grid">{vid}{gallery}</div>
   </section>
 
+{fb_cta(p) if c['slug'] == 'flowboard' else ''}
   <a class="next" href="{nxt['slug']}.html">
     <span class="eyebrow">{e(UI['next'])}</span>
     <span class="next__title">{nxt['title']} <span aria-hidden="true">→</span></span>
