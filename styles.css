@@ -452,3 +452,14 @@ em { font-style: italic; }
 .next__title { font-family: var(--serif); font-size: clamp(48px, 8vw, 120px); line-height: 1; letter-spacing: -.02em; }
 .next:hover .next__title { color: var(--accent); }
 
+
+/* ---------- ÍCONES (Flaticon, traço à mão; a cor vem do texto) ---------- */
+.ico {
+  display: inline-block; width: 1em; height: 1em; vertical-align: -.12em; background: currentColor;
+  -webkit-mask: var(--i) center / contain no-repeat; mask: var(--i) center / contain no-repeat;
+}
+.ico--wave { width: 1.15em; height: 1.15em; transform-origin: 70% 80%; animation: wave 2.4s ease-in-out infinite; }
+@keyframes wave { 0%, 60%, 100% { transform: rotate(0); } 10%, 30% { transform: rotate(16deg); } 20%, 40% { transform: rotate(-8deg); } }
+.post__stats .ico { width: 16px; height: 16px; color: #5e5e5e; margin-right: 3px; }
+.foot__made { display: inline-flex; align-items: center; gap: 8px; }
+.foot__made .ico { width: 22px; height: 22px; color: var(--ink-2); }
