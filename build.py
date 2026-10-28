@@ -143,8 +143,21 @@ def video(prefix, name, label, extra=""):
             f'muted loop playsinline preload="none" aria-label="{e(label)}"{extra}></video>')
 
 
+_SIZES = {}
+
+
+def size(src):
+    if src not in _SIZES:
+        from PIL import Image
+        with Image.open(os.path.join(ROOT, "assets/img", src)) as im:
+            _SIZES[src] = im.size
+    return _SIZES[src]
+
+
 def img(prefix, src, alt, extra=""):
-    return f'<img src="{prefix}assets/img/{src}" alt="{e(alt)}" loading="lazy"{extra}>'
+    w, h = size(src)
+    dims = "" if "width=" in extra else f' width="{w}" height="{h}"'
+    return f'<img src="{prefix}assets/img/{src}" alt="{e(alt)}" loading="lazy"{dims}{extra}>'
 
 
 def browser(url):
@@ -468,35 +481,46 @@ CASES = [
 
 # ---------------------------------------------------------------- home: mosaicos
 
+def slide(p, kind, src, alt, url=None):
+    """Um item do carrossel. kind: img, browser, phone, logo, contain, light."""
+    cls = {"img": "s zoom", "browser": "s s--browser zoom", "phone": "s s--phone zoom", "logo": "s s--logo",
+           "contain": "s s--contain zoom", "light": "s s--light zoom"}[kind]
+    bar = browser(url) if url else ""
+    w, h = size(src)
+    style = f' style="--ar: {w / h:.4f}"' if kind == "browser" else ""
+    return f'<figure class="{cls}"{style}>{bar}{img(p, src, alt)}</figure>'
+
+
+def vslide(p, name, label):
+    return f'<figure class="s s--video">{video(p, name, label)}</figure>'
+
+
 def bento(c, p):
     s = c["slug"]
     if s == "flowboard":
-        return f"""<div class="bento bento--flow">
-        <figure class="zoom f-browser">{browser('useflowboard.com/app')}{img(p, 'fb-kanban.webp', ('Board do FlowBoard em kanban, com demandas por status', 'FlowBoard board in kanban view, tasks by status'))}</figure>
-        <figure class="zoom f-phone">{img(p, 'fb-mob-board.webp', ('Board do FlowBoard no celular', 'FlowBoard board on mobile'))}</figure>
-        <figure class="zoom f-half">{img(p, 'fb-home.webp', ('Home do FlowBoard com a Daily e as prioridades do dia', 'FlowBoard home with the daily and today’s priorities'))}</figure>
-        <figure class="zoom f-half">{img(p, 'fb-kanban-dark.webp', ('Board do FlowBoard no modo escuro', 'FlowBoard board in dark mode'))}</figure>
-        <figure class="zoom f-browser">{browser('useflowboard.com')}{img(p, 'fb-site.webp', ('Site do FlowBoard: Cada demanda num lugar só', 'FlowBoard website'))}</figure>
-        <figure class="zoom f-phone">{img(p, 'fb-mob-daily.webp', ('Daily do FlowBoard no celular', 'FlowBoard daily on mobile'))}</figure>
-      </div>"""
-    if s == "board-circle":
-        return f"""<div class="bento bento--board">
-        <figure class="b-logo">{img(p, 'bc-logo.png', ('Logotipo Board Circle', 'Board Circle logo'))}</figure>
-        <figure class="b-video">{video(p, 'bc-loop', ('Loop animado do Board Circle para o telão do evento', 'Board Circle animated screen loop'))}</figure>
-        <figure class="zoom">{img(p, 'bc-convite.webp', ('Convite do Board Circle Experience', 'Board Circle Experience invitation'))}</figure>
-        <figure class="zoom">{img(p, 'bc-std.webp', ('Save the date do Board Circle', 'Board Circle save the date'))}</figure>
-        <figure class="zoom b-light">{img(p, 'bc-ecobag.webp', ('Mockup de ecobag preta com a marca Board Circle', 'Black tote bag mockup with the Board Circle brand'))}</figure>
-        <figure class="zoom b-wide">{img(p, 'bc-book-li.webp', ('Divulgação do book Conselho que Gera Valor em tablet', 'Book announcement on a tablet'))}</figure>
-        <figure class="zoom b-tall">{img(p, 'bc-azeite.webp', ('Mockup de porta-azeite com a marca Board Circle', 'Olive oil holder mockup with the Board Circle brand'))}</figure>
-      </div>"""
-    if s == "summer-job-moove":
+        items = [
+            slide(p, "browser", "fb-kanban.webp", ("Board do FlowBoard em kanban, com demandas por status", "FlowBoard board in kanban view, tasks by status"), "useflowboard.com/app"),
+            slide(p, "phone", "fb-mob-board.webp", ("Board do FlowBoard no celular", "FlowBoard board on mobile")),
+            slide(p, "img", "fb-home.webp", ("Home do FlowBoard com a Daily e as prioridades do dia", "FlowBoard home with the daily and today’s priorities")),
+            slide(p, "img", "fb-kanban-dark.webp", ("Board do FlowBoard no modo escuro", "FlowBoard board in dark mode")),
+            slide(p, "phone", "fb-mob-daily.webp", ("Daily do FlowBoard no celular", "FlowBoard daily on mobile")),
+            slide(p, "browser", "fb-site.webp", ("Site do FlowBoard: Cada demanda num lugar só", "FlowBoard website"), "useflowboard.com"),
+        ]
+    elif s == "board-circle":
+        items = [
+            slide(p, "logo", "bc-logo.png", ("Logotipo Board Circle", "Board Circle logo")),
+            vslide(p, "bc-loop", ("Loop animado do Board Circle para o telão do evento", "Board Circle animated screen loop")),
+            slide(p, "img", "bc-convite.webp", ("Convite do Board Circle Experience", "Board Circle Experience invitation")),
+            slide(p, "img", "bc-std.webp", ("Save the date do Board Circle", "Board Circle save the date")),
+            slide(p, "img", "bc-book-li.webp", ("Divulgação do book Conselho que Gera Valor em tablet", "Book announcement on a tablet")),
+            slide(p, "light", "bc-ecobag.webp", ("Mockup de ecobag preta com a marca Board Circle", "Black tote bag mockup with the Board Circle brand")),
+            slide(p, "contain", "bc-azeite.webp", ("Mockup de porta-azeite com a marca Board Circle", "Olive oil holder mockup with the Board Circle brand")),
+        ]
+    elif s == "summer-job-moove":
         caption = ("Passe suas férias no Brasil e construa seu futuro na Moove ☀️ Inscrições abertas para o Summer Job Moove 2027 em São Paulo, Rio de Janeiro ou Filadélfia.",
                    "Spend your break in Brazil and build your future at Moove ☀️ Applications are open for Summer Job Moove 2027 in São Paulo, Rio de Janeiro or Philadelphia.")
         acts = [("Gostei", "Like"), ("Comentar", "Comment"), ("Compartilhar", "Repost"), ("Enviar", "Send")]
-        return f"""<div class="bento bento--moove">
-        <figure class="zoom m-browser">{browser('summerjobmoovelub.com')}{img(p, 'moove-lp-topo.webp', ('Topo da landing page Summer Job Moove no computador', 'Summer Job Moove landing page hero on desktop'))}</figure>
-        <figure class="zoom m-phone">{img(p, 'moove-lp-mobile.webp', ('Landing page Summer Job Moove no celular', 'Summer Job Moove landing page on mobile'))}</figure>
-        <figure class="m-feed">
+        post = f"""<figure class="s s--post">
           <div class="post">
             <header class="post__head">
               <img src="{p}assets/img/mappit-avatar.webp" alt="" width="48" height="48">
@@ -504,21 +528,33 @@ def bento(c, p):
               <span class="post__follow">+ {e(('Seguir', 'Follow'))}</span>
             </header>
             <p class="post__text">{e(caption)}</p>
-            <div class="zoom post__media">{img(p, 'moove-feed.webp', ('Post de feed: Construa seu futuro na Moove', 'Feed post: Build your future at Moove'), ' width="1080" height="1080"')}</div>
+            <div class="zoom post__media">{img(p, 'moove-feed.webp', ('Post de feed: Construa seu futuro na Moove', 'Feed post: Build your future at Moove'))}</div>
             <div class="post__stats" aria-hidden="true"><span><i>👍</i><i>❤️</i><i>👏</i></span></div>
             <div class="post__actions">{''.join(f'<span>{e(a)}</span>' for a in acts)}</div>
           </div>
-        </figure>
-        <div class="m-stack">
-          <figure class="m-video">{video(p, 'moove-motion', ('Motion de divulgação do Summer Job Moove', 'Summer Job Moove promo motion'))}</figure>
-          <figure class="zoom m-wide">{img(p, 'moove-lp-08.webp', ('Seção de etapas do processo seletivo', 'Selection steps section'))}</figure>
+        </figure>"""
+        items = [
+            slide(p, "browser", "moove-lp-topo.webp", ("Topo da landing page Summer Job Moove no computador", "Summer Job Moove landing page hero on desktop"), "summerjobmoovelub.com"),
+            slide(p, "phone", "moove-lp-mobile.webp", ("Landing page Summer Job Moove no celular", "Summer Job Moove landing page on mobile")),
+            post,
+            vslide(p, "moove-motion", ("Motion de divulgação do Summer Job Moove", "Summer Job Moove promo motion")),
+            slide(p, "img", "moove-lp-08.webp", ("Seção de etapas do processo seletivo", "Selection steps section")),
+        ]
+    else:
+        items = [
+            slide(p, "browser", "pm-site-old.webp", ("Topo do site Panorama Mulheres 2025", "Panorama Mulheres 2025 website hero"), "panoramamulheres.com"),
+            slide(p, "img", "pm-participe-2.webp", ("Post da campanha Participe da 6ª edição", "Participe campaign post, 6th edition")),
+            slide(p, "img", "pm-insights.webp", ("Seção de principais insights da edição 2025", "Key insights of the 2025 edition")),
+            slide(p, "img", "pm-edicoes.webp", ("Linha do tempo das edições desde 2017", "Editions timeline since 2017")),
+        ]
+    track = "\n        ".join(items)
+    label = e((f"Imagens de {c['title']}", f"{c['title']} images"))
+    return f"""<div class="car car--{c['theme']}" role="region" aria-label="{label}">
+        <button class="car__btn car__btn--prev" type="button" aria-label="{e(('Anterior', 'Previous'))}" disabled>←</button>
+        <div class="car__track" tabindex="0">
+        {track}
         </div>
-      </div>"""
-    return f"""<div class="bento bento--panorama">
-        <figure class="zoom p-browser">{browser('panoramamulheres.com')}{img(p, 'pm-site-old.webp', ('Topo do site Panorama Mulheres 2025', 'Panorama Mulheres 2025 website hero'))}</figure>
-        <figure class="zoom">{img(p, 'pm-participe-2.webp', ('Post da campanha Participe da 6ª edição', 'Participe campaign post, 6th edition'))}</figure>
-        <figure class="zoom">{img(p, 'pm-insights.webp', ('Seção de principais insights da edição 2025', 'Key insights of the 2025 edition'))}</figure>
-        <figure class="zoom">{img(p, 'pm-edicoes.webp', ('Linha do tempo das edições desde 2017', 'Editions timeline since 2017'))}</figure>
+        <button class="car__btn car__btn--next" type="button" aria-label="{e(('Próximo', 'Next'))}">→</button>
       </div>"""
 
 
@@ -587,10 +623,10 @@ def home():
         ("radar-header", ("Radar TG", "Radar TG"), ("Header animado de newsletter", "Animated newsletter header")),
     ]
     reel_html = "".join(f"""
-        <figure class="reel__item">
-          {video(p, v, t)}
-          <figcaption><b>{e(t)}</b> {e(d)}</figcaption>
-        </figure>""" for v, t, d in reel)
+          <figure>
+            {video(p, v, t)}
+            <figcaption><b>{e(t)}</b> {e(d)}</figcaption>
+          </figure>""" for v, t, d in reel)
 
     pod_html = "".join(f"""
           <a class="ep" href="https://www.youtube.com/watch?v={vid}" target="_blank" rel="noopener">
@@ -672,28 +708,30 @@ def home():
 
   <section id="motion" class="motion">
     <div class="wrap">
-      <header class="section__head">
-        <p class="eyebrow">Motion</p>
+      <header class="section__head section__head--row">
         <h2 class="section__title">{L(('Coisas que <em>se mexem</em>', 'Things that <em>move</em>'))}</h2>
+        <div class="tabs" role="tablist" aria-label="{e(('Motion e podcast', 'Motion and podcast'))}">
+          <button type="button" role="tab" id="tab-motion" aria-controls="panel-motion" aria-selected="true">Motion</button>
+          <button type="button" role="tab" id="tab-pod" aria-controls="panel-pod" aria-selected="false" tabindex="-1">Podcast · C-Talks</button>
+        </div>
       </header>
-      <figure class="showreel">
-        {video(p, 'showreel', ('Showreel de motion 2026', 'Motion showreel 2026'))}
-        <figcaption><b>Showreel 2026</b> {e(('Summer Job Moove e Board Circle · 30s', 'Summer Job Moove and Board Circle · 30s'))}</figcaption>
-      </figure>
-      <div class="reel">{reel_html}
-        <figure class="reel__item reel__item--gif">
-          {img(p, 'exame-retangulo.gif', ('Banner animado Talenses Group para a Exame', 'Talenses Group animated banner for Exame'))}
-          <figcaption><b>Talenses Group × Exame</b> {e(('Banners animados de mídia', 'Animated media banners'))}</figcaption>
-        </figure>
+
+      <div id="panel-motion" role="tabpanel" aria-labelledby="tab-motion">
+        <div class="mgrid">
+          <figure class="showreel">
+            {video(p, 'showreel', ('Showreel de motion 2026', 'Motion showreel 2026'))}
+            <figcaption><b>Showreel 2026</b> {e(('Summer Job Moove e Board Circle · 30s', 'Summer Job Moove and Board Circle · 30s'))}</figcaption>
+          </figure>{reel_html}
+          <figure class="m-gif">
+            {img(p, 'exame-retangulo.gif', ('Banner animado Talenses Group para a Exame', 'Talenses Group animated banner for Exame'))}
+            <figcaption><b>Talenses Group × Exame</b> {e(('Banners animados de mídia', 'Animated media banners'))}</figcaption>
+          </figure>
+        </div>
       </div>
 
-      <div class="pod">
+      <div id="panel-pod" role="tabpanel" aria-labelledby="tab-pod">
         <div class="pod__head">
-          <div>
-            <p class="eyebrow">Podcast</p>
-            <h3 class="pod__title">C-Talks <span>by Talenses Group</span></h3>
-            <p class="pod__text">{e(('Edito os episódios do videocast do Talenses Group, com executivos e lideranças, e os cortes para as redes.', 'I edit the episodes of Talenses Group’s videocast with executives and business leaders, plus the short cuts for social.'))}</p>
-          </div>
+          <p class="pod__text">{e(('Edito os episódios do C-Talks, o videocast do Talenses Group com executivos e lideranças, e os cortes para as redes.', 'I edit C-Talks, Talenses Group’s videocast with executives and business leaders, plus the short cuts for social.'))}</p>
           <a class="link pod__all" href="{CTALKS}" target="_blank" rel="noopener">{e(('Ver todos no YouTube', 'Watch all on YouTube'))} ↗</a>
         </div>
         <div class="pod__grid">{pod_html}
@@ -712,10 +750,6 @@ def home():
   </section>
 {testimonials}
   <section id="sobre" class="wrap section about">
-    <div class="about__photos" aria-hidden="true">
-      <figure class="polaroid polaroid--a"><img src="{p}assets/img/lucas2.webp" alt="" loading="lazy"><figcaption class="hand">{e(('eu, de touca', 'me, in a beanie'))}</figcaption></figure>
-      <figure class="polaroid polaroid--b"><img src="{p}assets/img/eddie.webp" alt="" loading="lazy"><figcaption class="hand">{e(('o Eddie, chefe do estúdio', 'Eddie, head of studio'))}</figcaption></figure>
-    </div>
     <div class="about__text">
       <p class="eyebrow">{e(UI['about'])}</p>
       <h2 class="section__title">{L(('Curioso por natureza, <em>detalhista</em> por teimosia.', 'Curious by nature, <em>detail-obsessed</em> by choice.'))}</h2>
@@ -723,24 +757,24 @@ def home():
              'I’m from São Bernardo do Campo and work as a Creative Analyst at Talenses Group, serving a whole ecosystem of brands: Talenses, Talenses Executive, Mappit, Assigna, WEDO, Landtech and Instituto TG. That has me moving between branding, editorial, web and video, often on the same day.'))}</p>
       <p>{e(('Fora do trabalho, divido a rotina com o Eddie (que aparece pra pedir carinho no meio das criações) e jogo videogame. Zelda é o favorito, pela forma como tudo nele é pensado nos mínimos detalhes. Tento levar isso pro que eu faço.',
              'Outside work I share my days with Eddie (who shows up for cuddles mid-project) and play video games. Zelda is my favourite, for how every tiny detail is thought through. I try to bring that into what I make.'))}</p>
-
+      <div class="about__photos" aria-hidden="true">
+        <figure class="polaroid polaroid--a"><img src="{p}assets/img/lucas2.webp" alt="" loading="lazy"><figcaption class="hand">{e(('eu, de touca', 'me, in a beanie'))}</figcaption></figure>
+        <figure class="polaroid polaroid--b"><img src="{p}assets/img/eddie.webp" alt="" loading="lazy"><figcaption class="hand">{e(('o Eddie, chefe do estúdio', 'Eddie, head of studio'))}</figcaption></figure>
+      </div>
+      <div class="skills">
+        <h3>{e(('Faço', 'I do'))}</h3>
+        <ul>{''.join(f'<li>{e(x)}</li>' for x in [('Identidade visual', 'Visual identity'), ('Editorial & impressos', 'Editorial & print'), ('Web design & landing pages', 'Web design & landing pages'), ('UI, produto & design systems', 'UI, product & design systems'), ('Motion & edição de vídeo', 'Motion & video editing'), ('Social media', 'Social media')])}</ul>
+        <h3>{e(('Uso', 'I use'))}</h3>
+        <ul>{''.join(f'<li>{e(x)}</li>' for x in ['Figma', 'Photoshop', 'Illustrator', 'InDesign', 'After Effects', 'Premiere', 'Lightroom', 'HTML/CSS/JS', 'React', 'Replit', ('IA no fluxo criativo', 'AI in the creative workflow')])}</ul>
+      </div>
+    </div>
+    <aside class="about__side">
       <h3 class="about__sub">{e(('Trajetória', 'Experience'))}</h3>
       <ol class="tl">{tl}
       </ol>
       <p class="about__edu">{e(('Formação em design na EBAC, Escola Britânica de Artes Criativas e Tecnologia.', 'Design studies at EBAC, British School of Creative Arts and Technology.'))}</p>
-
-      <div class="skills">
-        <div>
-          <h3>{e(('Faço', 'I do'))}</h3>
-          <ul>{''.join(f'<li>{e(x)}</li>' for x in [('Identidade visual', 'Visual identity'), ('Editorial & impressos', 'Editorial & print'), ('Web design & landing pages', 'Web design & landing pages'), ('UI, produto & design systems', 'UI, product & design systems'), ('Motion & edição de vídeo', 'Motion & video editing'), ('Social media', 'Social media')])}</ul>
-        </div>
-        <div>
-          <h3>{e(('Uso', 'I use'))}</h3>
-          <ul>{''.join(f'<li>{e(x)}</li>' for x in ['Figma', 'Photoshop · Illustrator · InDesign', 'After Effects · Premiere', 'Lightroom', ('HTML/CSS/JS · React · Replit', 'HTML/CSS/JS · React · Replit'), ('IA no fluxo criativo', 'AI in the creative workflow')])}</ul>
-        </div>
-      </div>
       <a class="btn btn--ghost" href="{cv}" download>{e(UI['cv'])} ↓</a>
-    </div>
+    </aside>
   </section>
 
   <section id="contato" class="contact">

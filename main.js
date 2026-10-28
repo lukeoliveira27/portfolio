@@ -64,3 +64,57 @@ document.querySelectorAll('.zoom').forEach((fig) => {
   fig.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
 });
 box.addEventListener('click', (e) => { if (e.target !== boxImg) box.close(); });
+
+// Carrosséis dos cases: setas, teclado e arrastar com o mouse
+document.querySelectorAll('.car').forEach((car) => {
+  const track = car.querySelector('.car__track');
+  const prev = car.querySelector('.car__btn--prev');
+  const next = car.querySelector('.car__btn--next');
+  const step = () => track.clientWidth * 0.8;
+  const update = () => {
+    prev.disabled = track.scrollLeft < 8;
+    next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+  };
+  prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+  next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+  track.addEventListener('scroll', update, { passive: true });
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); track.scrollBy({ left: step(), behavior: 'smooth' }); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); track.scrollBy({ left: -step(), behavior: 'smooth' }); }
+  });
+  // arrastar com o mouse (no toque o navegador já faz isso)
+  let down = null;
+  track.addEventListener('pointerdown', (e) => { if (e.pointerType === 'mouse') down = { x: e.clientX, left: track.scrollLeft, moved: false }; });
+  addEventListener('pointermove', (e) => {
+    if (!down) return;
+    const dx = e.clientX - down.x;
+    if (Math.abs(dx) > 5) { down.moved = true; track.style.scrollSnapType = 'none'; track.scrollLeft = down.left - dx; }
+  });
+  addEventListener('pointerup', () => {
+    if (!down) return;
+    const moved = down.moved; down = null; track.style.scrollSnapType = '';
+    if (moved) track.addEventListener('click', (ev) => { ev.stopPropagation(); ev.preventDefault(); }, { capture: true, once: true });
+  });
+  addEventListener('resize', update);
+  update();
+});
+
+// Abas Motion / Podcast
+const tabs = [...document.querySelectorAll('.tabs [role="tab"]')];
+const select = (tab) => {
+  tabs.forEach((t) => {
+    const on = t === tab;
+    t.setAttribute('aria-selected', on);
+    t.tabIndex = on ? 0 : -1;
+    document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+  });
+};
+tabs.forEach((t, i) => {
+  t.addEventListener('click', () => select(t));
+  t.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    const n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+    n.focus(); select(n);
+  });
+});
+if (tabs.length) select(tabs[0]);
