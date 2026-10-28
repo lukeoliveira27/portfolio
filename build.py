@@ -131,7 +131,7 @@ def foot(prefix):
   <img alt="">
 </dialog>
 
-<script>window.I18N = {{ pause: "{e(UI['pause'])}", play: "{e(UI['play'])}", zoom: "{e(UI['zoom'])}" }};</script>
+<script>window.I18N = {{ pause: "{e(UI['pause'])}", play: "{e(UI['play'])}", zoom: "{e(UI['zoom'])}", swipe: "{e(('deslize para ver mais', 'swipe for more'))}" }};</script>
 <script src="{prefix}main.js"></script>
 </body>
 </html>

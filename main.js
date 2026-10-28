@@ -1,4 +1,4 @@
-const T = window.I18N || { pause: 'Pausar vídeo', play: 'Tocar vídeo', zoom: 'Ampliar' };
+const T = window.I18N || { pause: 'Pausar vídeo', play: 'Tocar vídeo', zoom: 'Ampliar', swipe: 'deslize para ver mais' };
 const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Borda no menu ao rolar
@@ -60,9 +60,19 @@ document.querySelectorAll('.car').forEach((car) => {
   const prev = car.querySelector('.car__btn--prev');
   const next = car.querySelector('.car__btn--next');
   const step = () => track.clientWidth * 0.8;
+  // contador "1 / 6" (aparece só no celular, pelo CSS)
+  const slides = [...track.children];
+  const count = document.createElement('p');
+  count.className = 'car__count';
+  count.setAttribute('aria-hidden', 'true');
+  car.appendChild(count);
   const update = () => {
     prev.disabled = track.scrollLeft < 8;
     next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+    const x = track.scrollLeft + 24;
+    let i = slides.findIndex((s) => s.offsetLeft + s.offsetWidth / 2 > x);
+    if (next.disabled) i = slides.length - 1;
+    count.textContent = `${Math.max(i, 0) + 1} / ${slides.length}${i <= 0 ? ` · ${T.swipe}` : ''}`;
   };
   prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
   next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));

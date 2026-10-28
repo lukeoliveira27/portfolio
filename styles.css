@@ -453,3 +453,38 @@ em { font-style: italic; }
 .post__stats .ico { width: 16px; height: 16px; color: #5e5e5e; margin-right: 3px; }
 .foot__made { display: inline-flex; align-items: center; gap: 8px; }
 .foot__made .ico { width: 22px; height: 22px; color: var(--ink-2); }
+
+/* ---------- AJUSTES DE CELULAR ---------- */
+.car__count { display: none; }
+@media (max-width: 900px) {
+  /* carrossel: cada item cabe na tela e o próximo aparece na borda, mostrando que dá pra deslizar */
+  .car { --h: 460px; }
+  .s { max-width: calc(100vw - 72px); }
+  .s > img { object-fit: cover; object-position: top left; }
+  .s--browser > img { width: 100%; }
+  .s--contain > img { object-fit: contain; object-position: center; }
+  .car__count { display: block; margin: 10px var(--gutter) 0; font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  /* post do LinkedIn mais largo e enxuto */
+  .s--post { width: 290px; }
+  .post__head div span:first-of-type { display: none; }
+  .post__text { -webkit-line-clamp: 2; }
+  .post__actions span { font-size: 11px; padding-inline: 2px; }
+  /* áreas de toque */
+  .nav nav a { padding-block: 10px; }
+  .nav .nav__lang { padding-inline: 8px; }
+  .contact__links a { display: inline-block; padding-block: 8px; }
+  .card h3 a { display: inline-block; padding-block: 4px; }
+  /* polaroids: legenda cabe na foto */
+  .polaroid { padding-bottom: 44px; }
+  .polaroid figcaption { white-space: normal; right: 8px; line-height: 1.05; font-size: 16px; }
+}
+@media (max-width: 760px) {
+  /* páginas de case: grupos de 3 peças viram uma fileira para deslizar */
+  .cf-grid:has(> .cf--third) {
+    display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+    margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter);
+  }
+  .cf-grid:has(> .cf--third)::-webkit-scrollbar { display: none; }
+  .cf-grid:has(> .cf--third) > .cf { flex: 0 0 68%; scroll-snap-align: start; }
+  .cf-grid:has(> .cf--third) img { height: 300px; object-fit: cover; }
+}
