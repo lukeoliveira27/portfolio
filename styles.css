@@ -93,10 +93,16 @@ em { font-style: italic; }
   .hero__photo figcaption { left: auto; right: -8px; }
 }
 
-/* ---------- MARCAS ---------- */
-.brands { border-block: 1px solid var(--line); padding-block: 18px; }
-.brands p { margin: 0; font-size: 15px; color: var(--ink-2); line-height: 1.7; }
-.brands b { font-weight: 500; color: var(--ink); }
+/* ---------- MARCAS (faixa animada; para ao passar o mouse e com "reduzir movimento") ---------- */
+.marquee { overflow: hidden; border-block: 1px solid var(--line); padding: 18px 0; }
+.marquee__track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee span {
+  font-family: var(--serif); font-size: clamp(22px, 2.6vw, 34px); white-space: nowrap; padding-inline: 28px;
+  display: inline-flex; align-items: center;
+}
+.marquee span::after { content: "✦"; font-size: .5em; color: var(--accent); margin-left: 56px; }
+@keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ---------- SECTIONS ---------- */
 .section { padding-block: clamp(56px, 7vw, 100px); }

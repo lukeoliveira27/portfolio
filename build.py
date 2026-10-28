@@ -605,7 +605,7 @@ def home():
             "I'm Lucas, a 25-year-old designer from São Paulo. I look after the visual communication of the Talenses Group "
             "ecosystem: from event identities to bilingual landing pages, printed books to media motion. On the side, I built a product.")
     brands = ["Talenses Group", "Talenses Executive", "Mappit", "Assigna", "Moove", "Samsung", "UBS", "LiveMode", "Insper", "FTI Consulting"]
-    brands_txt = ", ".join(f"<b>{b}</b>" for b in brands)
+    marquee = "".join(f"<span>{b}</span>" for b in brands) + "".join(f'<span aria-hidden="true">{b}</span>' for b in brands)
 
     cases_html = ""
     for i, c in enumerate(CASES, 1):
@@ -694,8 +694,8 @@ def home():
     </div>
   </section>
 
-  <div class="brands">
-    <p class="wrap">{e(('Marcas e clientes:', 'Brands and clients:'))} {brands_txt}.</p>
+  <div class="marquee" aria-label="{e(('Marcas e clientes', 'Brands and clients'))}">
+    <div class="marquee__track">{marquee}</div>
   </div>
 
   <section id="trabalhos" class="wrap section">
