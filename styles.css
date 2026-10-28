@@ -157,14 +157,36 @@ em { font-style: italic; }
 
 /* Moove */
 .bento--moove { background: var(--moove); }
-.bento--moove .m-browser { grid-column: span 4; grid-row: span 2; background: #fff; }
+.bento--moove .m-browser { grid-column: span 4; background: #fff; }
 .bento--moove .m-browser img { height: auto; }
-.bento--moove .m-phone { grid-column: span 2; grid-row: span 2; aspect-ratio: 9 / 15; }
-.bento--moove .m-phone img { object-position: top; }
-.bento--moove .m-video { grid-column: span 3; aspect-ratio: 16 / 9; }
-.bento--moove figure:nth-child(4) { grid-column: span 3; aspect-ratio: 16 / 9; }
-.bento--moove figure:nth-child(4) img { object-position: 50% 20%; }
-.bento--moove .m-wide { grid-column: span 6; aspect-ratio: 1600 / 723; }
+.bento--moove .m-phone { grid-column: span 2; }
+.bento--moove .m-phone img { position: absolute; inset: 0; object-position: top; }
+.bento--moove .m-feed { grid-column: span 3; display: grid; place-items: center; padding: clamp(16px, 3vw, 36px); background: #e9e6df; }
+.m-stack { grid-column: span 3; display: grid; grid-template-rows: auto 1fr; gap: 12px; }
+.bento--moove .m-video { aspect-ratio: 16 / 9; }
+.bento--moove .m-wide { min-height: 200px; }
+.bento--moove .m-wide { background: #0d2a47; }
+.bento--moove .m-wide img { position: absolute; inset: 0; object-fit: contain; }
+
+/* Mockup de post no feed */
+.post {
+  width: 100%; max-width: 520px; background: #fff; color: #191919; border-radius: 10px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 18px 40px -22px rgba(0,0,0,.45);
+  font: 400 14px/1.4 -apple-system, "Segoe UI", system-ui, sans-serif; overflow: hidden;
+}
+.post__head { display: grid; grid-template-columns: 48px 1fr auto; gap: 10px; align-items: start; padding: 12px 16px 0; }
+.post__head img { width: 48px; height: 48px; border-radius: 4px; object-fit: cover; border: 1px solid #e6e6e6; }
+.post__head b { display: block; font-size: 14px; font-weight: 600; }
+.post__head span { display: block; font-size: 12px; color: #666; line-height: 1.3; }
+.post__follow { color: #0a66c2 !important; font-weight: 600; font-size: 14px !important; padding-top: 2px; }
+.post__text { margin: 10px 16px 12px; font-size: 14px; color: #191919; }
+.bento .post__media { position: relative; border-radius: 0; cursor: zoom-in; overflow: hidden; }
+.bento .post__media img { width: 100%; height: auto; display: block; }
+.post__stats { display: flex; padding: 8px 16px; border-bottom: 1px solid #e8e8e8; }
+.post__stats span { display: inline-flex; gap: 2px; }
+.post__stats i { font-style: normal; font-size: 13px; }
+.post__actions { display: flex; justify-content: space-around; padding: 4px 8px; }
+.post__actions span { padding: 10px 6px; font-size: 13px; font-weight: 600; color: #5e5e5e; }
 
 /* Panorama */
 .bento--panorama { background: var(--panorama); }
@@ -185,13 +207,13 @@ em { font-style: italic; }
   .bento { grid-template-columns: repeat(2, 1fr); gap: 8px; padding: 8px; }
   .bento > figure { grid-column: span 2 !important; grid-row: auto !important; aspect-ratio: auto !important; }
   .bento--board figure:nth-child(3), .bento--board figure:nth-child(4),
-  .bento--moove .m-phone, .bento--moove figure:nth-child(4),
   .bento--panorama figure:nth-child(2) { grid-column: span 1 !important; aspect-ratio: 1 !important; }
-  .bento--moove .m-phone { aspect-ratio: 9 / 16 !important; }
-  .bento--moove figure:nth-child(4) { aspect-ratio: 9 / 16 !important; }
+  .bento--moove .m-phone { aspect-ratio: 3 / 4 !important; }
+  .m-stack { grid-column: span 2; gap: 8px; }
+  .bento--moove .m-feed { padding: 10px; }
+  .post__actions span { font-size: 12px; padding-inline: 2px; }
   .bento--board .b-light, .bento--board .b-tall { grid-column: span 1 !important; aspect-ratio: 1 !important; }
-  .bento--board .b-wide, .bento--board .b-strip, .bento--moove .m-video { order: 1; }
-  .bento--moove .m-wide { order: 2; }
+  .bento--board .b-wide, .bento--board .b-strip { order: 1; }
   .bento--board .b-video { aspect-ratio: 16/9 !important; }
   .bento--panorama figure:nth-child(2) { grid-column: span 2 !important; }
   .case__intro { grid-template-columns: 1fr; gap: 4px; }
