@@ -597,9 +597,13 @@ TIMELINE = [
 
 def home():
     p = "" if LANG == "pt" else "../"
+    def wiggle(txt):
+        # cada letra pula um pouco depois da anterior: o título faz o que diz
+        letters = "".join(" " if ch == " " else f'<span style="--i:{n}">{ch}</span>' for n, ch in enumerate(txt))
+        return f'<span class="hero__move" aria-label="{txt}"><span aria-hidden="true">{letters}</span></span>'
     hero_title = (
-        'Eu desenho <em>marcas</em>, <em>sites</em><br class="br-lg"> e coisas que <span class="hero__move">se mexem</span>.',
-        'I design <em>brands</em>, <em>websites</em><br class="br-lg"> and things that <span class="hero__move">move</span>.')
+        f'Eu desenho <em>marcas</em>, <em>sites</em><br class="br-lg"> e coisas que {wiggle("se mexem")}.',
+        f'I design <em>brands</em>, <em>websites</em><br class="br-lg"> and things that {wiggle("move")}.')
     lead = ("Sou o Lucas, designer de 25 anos. Hoje cuido da comunicação visual do ecossistema Talenses Group: de "
             "identidade de evento a landing page bilíngue, de book impresso a motion para mídia. E nas horas vagas, criei um produto.",
             "I'm Lucas, a 25-year-old designer from São Paulo. I look after the visual communication of the Talenses Group "
