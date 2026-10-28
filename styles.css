@@ -73,6 +73,13 @@ em { font-style: italic; }
 }
 .hero__title em { color: var(--accent); }
 .hero__move { display: inline-block; position: relative; }
+.hero__move span span { display: inline-block; animation: hop 3.2s cubic-bezier(.3,.7,.3,1) infinite; animation-delay: calc(var(--i) * 70ms); }
+@keyframes hop {
+  0%, 30%, 100% { transform: translateY(0) rotate(0); }
+  8% { transform: translateY(-.14em) rotate(-5deg); }
+  16% { transform: translateY(.02em) rotate(3deg); }
+  22% { transform: translateY(0) rotate(0); }
+}
 .hero__move::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: .06em; height: .14em;
   background: var(--highlight); z-index: -1; border-radius: 2px;
