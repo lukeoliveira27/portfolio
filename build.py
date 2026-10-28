@@ -16,6 +16,14 @@ EMAIL = "lucasoliveira270701@gmail.com"
 LINKEDIN = "https://www.linkedin.com/in/lucasantosoliveira/"
 BEHANCE = "https://www.behance.net/lucasoliveira107"
 YOUTUBE = "https://www.youtube.com/@lukizitos"
+CTALKS = "https://www.youtube.com/@c-talks-talenses-group"
+# Episódios do C-Talks que eu edito: (id do vídeo no YouTube, número, título)
+CTALKS_EPS = [
+    ("zMlBGGOxIZM", "#29", "Brasil 2027: o que esperar da economia e dos negócios"),
+    ("h2c3iQqqNe0", "#28", "Empresas familiares: sucessão, governança e o legado que atravessa gerações"),
+    ("WfEy7IuZ920", "#27", "Liderança feminina na era da inteligência artificial"),
+    ("sNCrkP57UUg", "#26", "Do código ao comando: como a IA está redesenhando a liderança"),
+]
 # Código do GoatCounter (ex.: "lucasoliveira"). Vazio = sem contador de visitas.
 GOATCOUNTER = ""
 # Depoimentos: lista de (frase_pt, frase_en, nome, cargo_pt, cargo_en). Vazio = seção some.
@@ -275,16 +283,15 @@ CASES = [
             },
             {
                 "text": [
-                    ("Para o evento, a identidade foi para o convite (cinco versões), o save the date, os displays de mesa, "
-                     "crachás, backdrop, ecobag e a tag do azeite de presente, além do loop animado do telão.",
-                     "For the event, the identity went into the invitation (five versions), the save the date, table displays, "
-                     "badges, backdrop, tote bag and the gift olive oil tag, plus the animated screen loop."),
+                    ("Para o evento, a identidade foi para o convite (cinco versões), o save the date, a ecobag e o porta-azeite "
+                     "de presente, além do loop animado do telão.",
+                     "For the event, the identity went into the invitation (five versions), the save the date, the tote bag and "
+                     "the gift olive oil holder, plus the animated screen loop."),
                 ],
                 "figs": [
                     ("third", "bc-std.webp", ("Save the date", "Save the date")),
                     ("third", "bc-ecobag.webp", ("Ecobag", "Tote bag")),
                     ("third", "bc-azeite.webp", ("Porta-azeite", "Olive oil holder")),
-                    ("wide", "bc-mesas.webp", ("Displays de mesa de 01 a 06", "Table displays 01 to 06")),
                 ],
             },
         ],
@@ -297,7 +304,7 @@ CASES = [
         "facts": [("21", ("versões do book até a gráfica", "book versions up to print")),
                   ("24", ("páginas de conteúdo", "pages of content")),
                   ("5", ("versões do convite", "invitation versions")),
-                  ("10+", ("peças para o evento", "pieces for the event"))],
+                  ("27/10", ("lançamento do evento", "launch event"))],
         "video": ("bc-loop", ("Loop animado do telão do evento", "Animated event screen loop")),
         "gallery": [
             ("half", "bc-book-li.webp", ("Divulgação do book no LinkedIn", "Book announcement for LinkedIn"), None),
@@ -481,7 +488,6 @@ def bento(c, p):
         <figure class="zoom b-light">{img(p, 'bc-ecobag.webp', ('Mockup de ecobag preta com a marca Board Circle', 'Black tote bag mockup with the Board Circle brand'))}</figure>
         <figure class="zoom b-wide">{img(p, 'bc-book-li.webp', ('Divulgação do book Conselho que Gera Valor em tablet', 'Book announcement on a tablet'))}</figure>
         <figure class="zoom b-tall">{img(p, 'bc-azeite.webp', ('Mockup de porta-azeite com a marca Board Circle', 'Olive oil holder mockup with the Board Circle brand'))}</figure>
-        <figure class="zoom b-strip">{img(p, 'bc-mesas.webp', ('Displays de mesa numerados de 01 a 06', 'Table displays numbered 01 to 06'))}</figure>
       </div>"""
     if s == "summer-job-moove":
         caption = ("Passe suas férias no Brasil e construa seu futuro na Moove ☀️ Inscrições abertas para o Summer Job Moove 2027 em São Paulo, Rio de Janeiro ou Filadélfia.",
@@ -538,8 +544,8 @@ def case_intro(c, i, p, case_href):
 
 TIMELINE = [
     ("2025", ("hoje", "now"), ("Analista de Criação Pleno", "Mid-level Creative Analyst"), "Talenses Group",
-     ("Branding e comunicação das marcas do grupo, sites, landing pages, editorial, vídeo e o FlowBoard.",
-      "Branding and communication for the group's brands, websites, landing pages, editorial, video and FlowBoard.")),
+     ("Branding e comunicação das marcas do grupo, sites, landing pages, editorial, edição do podcast C-Talks e o FlowBoard.",
+      "Branding and communication for the group’s brands, websites, landing pages, editorial, editing the C-Talks podcast and FlowBoard.")),
     ("2023", "2025", ("Analista de Criação Júnior", "Junior Creative Analyst"), "Sat",
      ("UI de landing pages e do novo blog, peças, vídeos e motions, mídia paga e e-mail marketing.",
       "UI for landing pages and the new blog, design, video and motion, paid media and email marketing.")),
@@ -585,6 +591,13 @@ def home():
           {video(p, v, t)}
           <figcaption><b>{e(t)}</b> {e(d)}</figcaption>
         </figure>""" for v, t, d in reel)
+
+    pod_html = "".join(f"""
+          <a class="ep" href="https://www.youtube.com/watch?v={vid}" target="_blank" rel="noopener">
+            <span class="ep__thumb"><img src="{p}assets/img/ct-{vid}.webp" alt="" loading="lazy" width="960" height="540"><span class="ep__play" aria-hidden="true">▶</span></span>
+            <span class="ep__n">C-Talks {n}</span>
+            <span class="ep__t">{html.escape(t)}</span>
+          </a>""" for vid, n, t in CTALKS_EPS)
 
     more = [
         ("samsung.webp", ("Estágio Samsung 2026", "Samsung Internship 2026"), ("Landing page · Mappit", "Landing page · Mappit"), None),
@@ -665,13 +678,26 @@ def home():
       </header>
       <figure class="showreel">
         {video(p, 'showreel', ('Showreel de motion 2026', 'Motion showreel 2026'))}
-        <figcaption><b>Showreel 2026</b> {e(('Shaping the Change, Summer Job Moove e Board Circle · 40s', 'Shaping the Change, Summer Job Moove and Board Circle · 40s'))}</figcaption>
+        <figcaption><b>Showreel 2026</b> {e(('Summer Job Moove e Board Circle · 30s', 'Summer Job Moove and Board Circle · 30s'))}</figcaption>
       </figure>
       <div class="reel">{reel_html}
         <figure class="reel__item reel__item--gif">
           {img(p, 'exame-retangulo.gif', ('Banner animado Talenses Group para a Exame', 'Talenses Group animated banner for Exame'))}
           <figcaption><b>Talenses Group × Exame</b> {e(('Banners animados de mídia', 'Animated media banners'))}</figcaption>
         </figure>
+      </div>
+
+      <div class="pod">
+        <div class="pod__head">
+          <div>
+            <p class="eyebrow">Podcast</p>
+            <h3 class="pod__title">C-Talks <span>by Talenses Group</span></h3>
+            <p class="pod__text">{e(('Edito os episódios do videocast do Talenses Group, com executivos e lideranças, e os cortes para as redes.', 'I edit the episodes of Talenses Group’s videocast with executives and business leaders, plus the short cuts for social.'))}</p>
+          </div>
+          <a class="link pod__all" href="{CTALKS}" target="_blank" rel="noopener">{e(('Ver todos no YouTube', 'Watch all on YouTube'))} ↗</a>
+        </div>
+        <div class="pod__grid">{pod_html}
+        </div>
       </div>
     </div>
   </section>
