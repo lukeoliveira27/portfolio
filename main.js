@@ -5,17 +5,6 @@ const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const nav = document.querySelector('.nav');
 addEventListener('scroll', () => nav.classList.toggle('is-scrolled', scrollY > 8), { passive: true });
 
-// Entrada suave dos blocos
-const io = new IntersectionObserver((entries) => {
-  entries.forEach((e) => {
-    if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
-  });
-}, { rootMargin: '0px 0px -10% 0px' });
-document.querySelectorAll('.case, .reel__item, .card, .about, .section__head, .step, .cs').forEach((el) => {
-  el.classList.add('reveal');
-  io.observe(el);
-});
-
 // Vídeos: tocam só quando aparecem, com botão de pausa.
 // Quem pediu menos movimento no sistema começa com tudo pausado.
 const ICON_PAUSE = '<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>';

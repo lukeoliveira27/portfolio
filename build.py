@@ -605,7 +605,7 @@ def home():
             "I'm Lucas, a 25-year-old designer from São Paulo. I look after the visual communication of the Talenses Group "
             "ecosystem: from event identities to bilingual landing pages, printed books to media motion. On the side, I built a product.")
     brands = ["Talenses Group", "Talenses Executive", "Mappit", "Assigna", "Moove", "Samsung", "UBS", "LiveMode", "Insper", "FTI Consulting"]
-    marquee = "".join(f"<span>{b}</span>" for b in brands) + "".join(f'<span aria-hidden="true">{b}</span>' for b in brands)
+    brands_txt = ", ".join(f"<b>{b}</b>" for b in brands)
 
     cases_html = ""
     for i, c in enumerate(CASES, 1):
@@ -683,7 +683,7 @@ def home():
 <main id="topo">
 
   <section class="hero wrap">
-    <p class="eyebrow"><span class="dot" aria-hidden="true"></span> {e(('Creative Analyst no Talenses Group · São Paulo', 'Creative Analyst at Talenses Group · São Paulo'))}</p>
+    <p class="eyebrow">{e(('Creative Analyst no Talenses Group, São Paulo', 'Creative Analyst at Talenses Group, São Paulo'))}</p>
     <h1 class="hero__title">{L(hero_title)}</h1>
     <div class="hero__foot">
       <p class="hero__lead">{e(lead)}</p>
@@ -694,14 +694,14 @@ def home():
     </div>
   </section>
 
-  <div class="marquee" aria-label="{e(('Marcas com que trabalhei', 'Brands I have worked with'))}">
-    <div class="marquee__track">{marquee}</div>
+  <div class="brands">
+    <p class="wrap">{e(('Marcas e clientes:', 'Brands and clients:'))} {brands_txt}.</p>
   </div>
 
   <section id="trabalhos" class="wrap section">
-    <header class="section__head">
-      <p class="eyebrow">{e(('Trabalhos selecionados', 'Selected work'))}</p>
-      <h2 class="section__title">{L(('Projetos de que <em>me orgulho</em>', 'Projects I’m <em>proud of</em>'))}</h2>
+    <header class="section__head section__head--row">
+      <h2 class="section__title">{e(('Trabalhos', 'Work'))}</h2>
+      <p class="section__note">{e(('Quatro projetos de 2025 e 2026. Cada um tem uma página com o processo completo.', 'Four projects from 2025 and 2026. Each one has a page with the full process.'))}</p>
     </header>
 {cases_html}
   </section>
@@ -709,7 +709,7 @@ def home():
   <section id="motion" class="motion">
     <div class="wrap">
       <header class="section__head section__head--row">
-        <h2 class="section__title">{L(('Coisas que <em>se mexem</em>', 'Things that <em>move</em>'))}</h2>
+        <h2 class="section__title">{e(('Motion e vídeo', 'Motion and video'))}</h2>
         <div class="tabs" role="tablist" aria-label="{e(('Motion e podcast', 'Motion and podcast'))}">
           <button type="button" role="tab" id="tab-motion" aria-controls="panel-motion" aria-selected="true">Motion</button>
           <button type="button" role="tab" id="tab-pod" aria-controls="panel-pod" aria-selected="false" tabindex="-1">Podcast · C-Talks</button>
@@ -751,8 +751,7 @@ def home():
 {testimonials}
   <section id="sobre" class="wrap section about">
     <div class="about__text">
-      <p class="eyebrow">{e(UI['about'])}</p>
-      <h2 class="section__title">{L(('Curioso por natureza, <em>detalhista</em> por teimosia.', 'Curious by nature, <em>detail-obsessed</em> by choice.'))}</h2>
+      <h2 class="section__title">{e(('Curioso por natureza, detalhista por teimosia.', 'Curious by nature, detail-obsessed by choice.'))}</h2>
       <p>{e(('Sou de São Bernardo do Campo e trabalho como Creative Analyst no Talenses Group, onde atendo um ecossistema inteiro de marcas: Talenses, Talenses Executive, Mappit, Assigna, WEDO, Landtech e o Instituto TG. Isso me fez transitar fácil entre branding, editorial, web e vídeo, muitas vezes no mesmo dia.',
              'I’m from São Bernardo do Campo and work as a Creative Analyst at Talenses Group, serving a whole ecosystem of brands: Talenses, Talenses Executive, Mappit, Assigna, WEDO, Landtech and Instituto TG. That has me moving between branding, editorial, web and video, often on the same day.'))}</p>
       <p>{e(('Fora do trabalho, divido a rotina com o Eddie (que aparece pra pedir carinho no meio das criações) e jogo videogame. Zelda é o favorito, pela forma como tudo nele é pensado nos mínimos detalhes. Tento levar isso pro que eu faço.',
@@ -779,10 +778,9 @@ def home():
 
   <section id="contato" class="contact">
     <div class="wrap">
-      <p class="eyebrow">{e(('Contato', 'Contact'))}</p>
-      <h2 class="contact__title">{e(('Tem um projeto em mente?', 'Got a project in mind?'))}<br><a href="mailto:{EMAIL}">{e(('Bora conversar', "Let's talk"))} <span aria-hidden="true">→</span></a></h2>
+      <h2 class="contact__title">{e(('Para falar sobre um projeto, uma vaga ou o FlowBoard:', 'To talk about a project, a role or FlowBoard:'))}</h2>
+      <a class="contact__mail" href="mailto:{EMAIL}">{EMAIL}</a>
       <ul class="contact__links">
-        <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
         <li><a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn ↗</a></li>
         <li><a href="{BEHANCE}" target="_blank" rel="noopener">Behance ↗</a></li>
         <li><a href="{YOUTUBE}" target="_blank" rel="noopener">YouTube ↗</a></li>
