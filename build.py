@@ -68,7 +68,7 @@ UI = {
     "play": ("Tocar vídeo", "Play video"),
     "zoom": ("Ampliar", "Enlarge"),
     "close": ("Fechar", "Close"),
-    "made": ("feito com muito ☕ e o Eddie no colo", "made with lots of ☕ and Eddie on my lap"),
+    "made": ("feito com muito café e o Eddie no colo", "made with lots of coffee and Eddie on my lap"),
 }
 
 
@@ -123,7 +123,7 @@ def head(prefix, title, desc, canonical_path, alt_path):
 def foot(prefix):
     return f"""<footer class="foot wrap">
   <span>© 2026 Lucas Oliveira</span>
-  <span class="hand">{e(UI['made'])}</span>
+  <span class="hand foot__made"><i class="ico" style="--i:url({prefix}assets/icons/cafe.png)" aria-hidden="true"></i>{e(UI['made'])}</span>
 </footer>
 
 <dialog class="lightbox" aria-label="{e(UI['zoom'])}">
@@ -517,19 +517,19 @@ def bento(c, p):
             slide(p, "contain", "bc-azeite.webp", ("Mockup de porta-azeite com a marca Board Circle", "Olive oil holder mockup with the Board Circle brand")),
         ]
     elif s == "summer-job-moove":
-        caption = ("Passe suas férias no Brasil e construa seu futuro na Moove ☀️ Inscrições abertas para o Summer Job Moove 2027 em São Paulo, Rio de Janeiro ou Filadélfia.",
-                   "Spend your break in Brazil and build your future at Moove ☀️ Applications are open for Summer Job Moove 2027 in São Paulo, Rio de Janeiro or Philadelphia.")
+        caption = ("Passe suas férias no Brasil e construa seu futuro na Moove. Inscrições abertas para o Summer Job Moove 2027 em São Paulo, Rio de Janeiro ou Filadélfia.",
+                   "Spend your break in Brazil and build your future at Moove. Applications are open for Summer Job Moove 2027 in São Paulo, Rio de Janeiro or Philadelphia.")
         acts = [("Gostei", "Like"), ("Comentar", "Comment"), ("Compartilhar", "Repost"), ("Enviar", "Send")]
         post = f"""<figure class="s s--post">
           <div class="post">
             <header class="post__head">
               <img src="{p}assets/img/mappit-avatar.webp" alt="" width="48" height="48">
-              <div><b>Mappit</b><span>{e(('Recrutamento de jovens talentos', 'Early talent recruitment'))}</span><span>1 d · 🌐</span></div>
+              <div><b>Mappit</b><span>{e(('Recrutamento de jovens talentos', 'Early talent recruitment'))}</span><span>1 d</span></div>
               <span class="post__follow">+ {e(('Seguir', 'Follow'))}</span>
             </header>
             <p class="post__text">{e(caption)}</p>
             <div class="zoom post__media">{img(p, 'moove-feed.webp', ('Post de feed: Construa seu futuro na Moove', 'Feed post: Build your future at Moove'))}</div>
-            <div class="post__stats" aria-hidden="true"><span><i>👍</i><i>❤️</i><i>👏</i></span></div>
+            <div class="post__stats" aria-hidden="true"><span><i class="ico" style="--i:url({p}assets/icons/curtir.png)"></i><i class="ico" style="--i:url({p}assets/icons/coracao.png)"></i><i class="ico" style="--i:url({p}assets/icons/palmas.png)"></i></span></div>
             <div class="post__actions">{''.join(f'<span>{e(a)}</span>' for a in acts)}</div>
           </div>
         </figure>"""
@@ -689,7 +689,7 @@ def home():
       <p class="hero__lead">{e(lead)}</p>
       <figure class="hero__photo">
         <img src="{p}assets/img/lucas.webp" alt="{e(('Lucas Oliveira sorrindo e fazendo sinal de paz', 'Lucas Oliveira smiling and making a peace sign'))}" width="800" height="800">
-        <figcaption class="hand">{e(('oi! 👋', 'hi! 👋'))}</figcaption>
+        <figcaption class="hand">{e(('oi!', 'hi!'))} <i class="ico ico--wave" style="--i:url({p}assets/icons/aceno.png)" aria-hidden="true"></i></figcaption>
       </figure>
     </div>
   </section>
