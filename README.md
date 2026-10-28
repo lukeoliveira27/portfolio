@@ -1,20 +1,28 @@
-# Portfólio — Lucas Oliveira
+# Portfólio · Lucas Oliveira
 
-Site pessoal com trabalhos selecionados de identidade visual, web e motion.
+Site estático (HTML + CSS + JS), em português (raiz) e inglês (`/en`).
 
-Estático (HTML + CSS + JS, sem build). Para rodar localmente:
+## Editar
+
+Os textos ficam no `build.py`, em pares (português, inglês). Os `.html` são gerados: não edite à mão.
 
 ```bash
-python3 -m http.server 8765
+python3 build.py          # gera home e páginas de case nos dois idiomas
+python3 build.py --pdf    # também gera os currículos em PDF (usa o Google Chrome)
+python3 -m http.server 8765   # para ver em http://localhost:8765
 ```
 
-e abrir http://localhost:8765.
+No topo do `build.py`:
+- `GOATCOUNTER`: código do contador de visitas (goatcounter.com). Vazio = desligado.
+- `TESTIMONIALS`: depoimentos. Lista vazia = seção escondida.
 
 ## Estrutura
 
-- `index.html` — conteúdo das seções e dos cases
-- `styles.css` — visual (cores em `:root`)
-- `main.js` — animações de entrada, play/pause dos vídeos e lightbox
-- `assets/img`, `assets/video` — mídias otimizadas (WebP / MP4 540p)
+- `index.html`, `cases/*.html`, `en/...`: páginas geradas
+- `styles.css`, `main.js`: visual, animações, pausa dos vídeos e lightbox
+- `assets/img`, `assets/video`: mídias otimizadas; `assets/*.pdf`: currículos
+- `tools/reel.swift`: monta o showreel; `tools/pdfpages.swift`: renderiza páginas de PDF
 
-Publicação: GitHub Pages (Settings → Pages → branch `main`, pasta `/`).
+Imagens do FlowBoard vêm sempre do Figma "FlowBoard · Telas" (dados fictícios), nunca do app logado.
+
+Publicação: GitHub Pages, branch `main`, pasta raiz.
