@@ -239,7 +239,7 @@ CASES = [
              "plans and transactional emails."),
         ],
         "facts": [("7", ("marcas do grupo num só board", "group brands on a single board")),
-                  ("120+", ("telas desenhadas no Figma", "screens designed in Figma")),
+                  ("+120", ("telas desenhadas no Figma", "screens designed in Figma")),
                   ("11", ("e-mails do sistema", "system emails")),
                   ("2", ("temas: claro e escuro", "themes: light and dark"))],
         "gallery": [
