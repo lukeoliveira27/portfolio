@@ -802,7 +802,7 @@ def home():
       <h3 class="about__sub">{e(('Trajetória', 'Experience'))}</h3>
       <ol class="tl">{tl}
       </ol>
-      <p class="about__edu">{e(('Formação em design na EBAC, Escola Britânica de Artes Criativas e Tecnologia.', 'Design studies at EBAC, British School of Creative Arts and Technology.'))}</p>
+      <p class="about__edu">{e(('Pós-graduação em UX/UI e Produtos Digitais na EBAC, Escola Britânica de Artes Criativas e Tecnologia, com conclusão prevista para janeiro de 2027.', 'Postgraduate studies in UX/UI and Digital Products at EBAC, British School of Creative Arts and Technology, expected to finish in January 2027.'))}</p>
       <a class="btn btn--ghost" href="{cv}" download>{e(UI['cv'])} ↓</a>
     </aside>
   </section>
@@ -961,7 +961,7 @@ ul {{ margin: 0; padding-left: 14pt; }} li {{ margin-bottom: 3pt; }}
 </div>
 
 <h2>{e(('Formação', 'Education'))}</h2>
-<p>{e(('EBAC, Escola Britânica de Artes Criativas e Tecnologia', 'EBAC, British School of Creative Arts and Technology'))}</p>
+<p>{e(('Pós-graduação em UX/UI e Produtos Digitais, EBAC, Escola Britânica de Artes Criativas e Tecnologia. Conclusão prevista para janeiro de 2027.', 'Postgraduate studies in UX/UI and Digital Products, EBAC, British School of Creative Arts and Technology. Expected to finish in January 2027.'))}</p>
 </body></html>"""
 
 
