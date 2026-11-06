@@ -331,7 +331,7 @@ CASES = [
         "title": "Summer Job Moove",
         "summary": (
             "Landing page bilíngue (PT/EN) para o programa de férias da Moove, voltado a brasileiros que estudam no exterior. "
-            "Fiz o design, o código, o SEO e o kit de lançamento: e-mails marketing, peças estáticas e motion para redes.",
+            "Fiz o design, o código, o SEO e o kit de lançamento: e-mails de marketing, peças estáticas e motion para redes.",
             "Bilingual (PT/EN) landing page for Moove's summer programme for Brazilians studying abroad. I did the design, "
             "code, SEO and launch kit: marketing emails, static pieces and motion for social."),
         "tags": [("Landing page", "Landing page"), ("Código", "Code"), ("E-mail mkt", "Email"), ("Social + motion", "Social + motion")],
@@ -468,7 +468,7 @@ CASES = [
              "entry point for companies to join the next one."),
         ],
         "facts": [("2017", ("início da série histórica", "start of the historical series")),
-                  ("310", ("empresas respondentes em 2024", "companies responded in 2024")),
+                  ("310", ("empresas respondentes na edição 2025", "companies responded in the 2025 edition")),
                   ("5ª", ("edição publicada no site", "edition published on the site")),
                   ("6ª", ("edição com campanha “Participe!”", "edition with the “Participe!” campaign"))],
         "gallery": [
