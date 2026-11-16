@@ -173,11 +173,11 @@ CASES = [
         "client": ("Produto autoral · 2026", "Personal product · 2026"),
         "title": "FlowBoard",
         "summary": (
-            "Plataforma de gestão de demandas que eu idealizei, desenhei e programei. Nasceu para organizar o time de "
-            "Comunicação do Talenses Group e virou produto: board, daily, calendário editorial, planejamentos, portal de "
+            "Plataforma de gestão de demandas que eu idealizei, desenhei e programei. Nasceu da rotina de quem atende "
+            "várias marcas ao mesmo tempo e virou produto: board, daily, calendário editorial, planejamentos, portal de "
             "chamados e recursos de foco que cada pessoa liga só se quiser. Também fiz a marca, o design system, o site e os e-mails.",
-            "A work management platform I conceived, designed and coded. It started as a way to organise Talenses Group's "
-            "Communications team and grew into a product: board, daily, editorial calendar, plans, a request portal and focus "
+            "A work management platform I conceived, designed and coded. It grew out of the routine of serving "
+            "many brands at once and became a product: board, daily, editorial calendar, plans, a request portal and focus "
             "features each person can switch on if they want. I also made the brand, design system, website and emails."),
         "tags": [("Produto", "Product"), ("UI/UX", "UI/UX"), ("Design system", "Design system"), ("Código", "Code")],
         "link": "https://useflowboard.com/",
@@ -189,10 +189,10 @@ CASES = [
         "tools": "Figma · React · TypeScript · Replit",
         "cover": ("fb-kanban.webp", ("Board do FlowBoard em kanban", "FlowBoard board in kanban view")),
         "challenge": [
-            ("O time de Comunicação atende sete marcas do grupo ao mesmo tempo. Os pedidos chegavam por e-mail, Teams e "
-             "conversa de corredor, e ninguém tinha uma visão única do que estava atrasado, em aprovação ou parado.",
-             "The Communications team serves seven group brands at once. Requests came in by email, Teams and hallway "
-             "chats, and nobody had a single view of what was late, waiting for approval or stuck."),
+            ("Times de comunicação costumam atender várias marcas ao mesmo tempo. Os pedidos chegam por e-mail, Teams e "
+             "conversa de corredor, e ninguém tem uma visão única do que estava atrasado, em aprovação ou parado.",
+             "Communications teams often serve several brands at once. Requests come in by email, Teams and hallway "
+             "chats, and nobody has a single view of what was late, waiting for approval or stuck."),
             ("As ferramentas prontas ou eram genéricas demais, ou viravam mais um sistema para alimentar. Eu queria algo "
              "que organizasse o trabalho sem pesar, inclusive para quem se distrai fácil ou trava na hora de começar.",
              "Off-the-shelf tools were either too generic or became one more system to feed. I wanted something that "
@@ -233,12 +233,12 @@ CASES = [
             },
         ],
         "result_text": [
-            ("Hoje o FlowBoard organiza o dia a dia do time, do pedido que chega até a entrega, e tem site próprio, "
+            ("Hoje o FlowBoard cobre o dia a dia do trabalho, do pedido que chega até a entrega, e tem site próprio, "
              "planos e e-mails transacionais.",
-             "Today FlowBoard runs the team's daily work, from incoming request to delivery, and has its own website, "
+             "Today FlowBoard covers the daily work, from incoming request to delivery, and has its own website, "
              "plans and transactional emails."),
         ],
-        "facts": [("7", ("marcas do grupo num só board", "group brands on a single board")),
+        "facts": [("5", ("jeitos de ver a mesma demanda", "ways to view the same request")),
                   ("+120", ("telas desenhadas no Figma", "screens designed in Figma")),
                   ("11", ("e-mails do sistema", "system emails")),
                   ("2", ("temas: claro e escuro", "themes: light and dark"))],
@@ -580,8 +580,8 @@ def case_intro(c, i, p, case_href):
 
 TIMELINE = [
     ("2025", ("hoje", "now"), ("Analista de Criação Pleno", "Mid-level Creative Analyst"), "Talenses Group",
-     ("Branding e comunicação das marcas do grupo, sites, landing pages, editorial, edição do podcast C-Talks e o FlowBoard.",
-      "Branding and communication for the group’s brands, websites, landing pages, editorial, editing the C-Talks podcast and FlowBoard.")),
+     ("Branding e comunicação das marcas do grupo, sites, landing pages, editorial e edição do podcast C-Talks.",
+      "Branding and communication for the group’s brands, websites, landing pages, editorial and editing the C-Talks podcast.")),
     ("2023", "2025", ("Analista de Criação Júnior", "Junior Creative Analyst"), "Sat",
      ("UI de landing pages e do novo blog, peças, vídeos e motions, mídia paga e e-mail marketing.",
       "UI for landing pages and the new blog, design, video and motion, paid media and email marketing.")),
@@ -631,9 +631,9 @@ def home():
     hero_title = (
         f'Eu desenho <em>marcas</em>, <em>sites</em><br class="br-lg"> e coisas que {wiggle("se mexem")}.',
         f'I design <em>brands</em>, <em>websites</em><br class="br-lg"> and things that {wiggle("move")}.')
-    lead = ("Sou o Lucas, designer de 25 anos. Hoje cuido da comunicação visual do ecossistema Talenses Group: de "
+    lead = ("Sou o Lucas e trabalho com design desde 2017, quando tinha 16 anos. Hoje cuido da comunicação visual do ecossistema Talenses Group: de "
             "identidade de evento a landing page bilíngue, de book impresso a motion para mídia. E nas horas vagas, criei um produto.",
-            "I'm Lucas, a 25-year-old designer from São Paulo. I look after the visual communication of the Talenses Group "
+            "I'm Lucas, from São Paulo, and I've worked in design since 2017, when I was 16. I look after the visual communication of the Talenses Group "
             "ecosystem: from event identities to bilingual landing pages, printed books to media motion. On the side, I built a product.")
     brands = ["Talenses Group", "Talenses Executive", "Mappit", "Assigna", "Moove", "Samsung", "UBS", "LiveMode", "Insper", "FTI Consulting"]
     marquee = "".join(f"<span>{b}</span>" for b in brands) + "".join(f'<span aria-hidden="true">{b}</span>' for b in brands)
@@ -700,9 +700,9 @@ def home():
     cv = f"{p}assets/{L(UI['cv_file'])}"
     path = "" if LANG == "pt" else "en/"
     alt = "en/" if LANG == "pt" else ""
-    out = head(p, L(("Lucas Oliveira · Designer", "Lucas Oliveira · Designer")),
-               L(("Lucas Oliveira, designer em São Paulo. Identidade visual, sites, landing pages, produto e motion.",
-                  "Lucas Oliveira, designer in São Paulo. Visual identity, websites, landing pages, product and motion.")),
+    out = head(p, "Lucas Oliveira · Creative Analyst & UI/UX Designer",
+               L(("Lucas Oliveira, Creative Analyst e UI/UX Designer em São Paulo. Identidade visual, sites, landing pages, produto e motion.",
+                  "Lucas Oliveira, Creative Analyst and UI/UX Designer in São Paulo. Visual identity, websites, landing pages, product and motion.")),
                path, alt)
     out += f"""
 <body>
@@ -714,7 +714,7 @@ def home():
 <main id="topo">
 
   <section class="hero wrap">
-    <p class="eyebrow">{e(('Creative Analyst | São Paulo', 'Creative Analyst | São Paulo'))}</p>
+    <p class="eyebrow">{e('Creative Analyst & UI/UX Designer | São Paulo')}</p>
     <h1 class="hero__title">{L(hero_title)}</h1>
     <div class="hero__foot">
       <p class="hero__lead">{e(lead)}</p>
@@ -795,7 +795,7 @@ def home():
         <h3>{e(('Faço', 'I do'))}</h3>
         <ul>{''.join(f'<li>{e(x)}</li>' for x in [('Identidade visual', 'Visual identity'), ('Editorial & impressos', 'Editorial & print'), ('Web design & landing pages', 'Web design & landing pages'), ('UI, produto & design systems', 'UI, product & design systems'), ('Motion & edição de vídeo', 'Motion & video editing'), ('Social media', 'Social media')])}</ul>
         <h3>{e(('Uso', 'I use'))}</h3>
-        <ul>{''.join(f'<li>{e(x)}</li>' for x in ['Figma', 'Photoshop', 'Illustrator', 'InDesign', 'After Effects', 'Premiere', 'Lightroom', 'HTML/CSS/JS', 'React', 'Replit', ('IA no fluxo criativo', 'AI in the creative workflow')])}</ul>
+        <ul>{''.join(f'<li>{e(x)}</li>' for x in ['Figma', 'Photoshop', 'Illustrator', 'InDesign', 'After Effects', 'Premiere', 'Lightroom', 'HTML/CSS/JS', 'React', 'Replit', ('Automação de processos com IA', 'AI process automation')])}</ul>
       </div>
     </div>
     <aside class="about__side">
@@ -943,12 +943,12 @@ ul {{ margin: 0; padding-left: 14pt; }} li {{ margin-bottom: 3pt; }}
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter+Tight:wght@400;600&display=swap" rel="stylesheet">
 </head><body>
 <h1>Lucas Oliveira</h1>
-<p class="sub">{e(('Designer · Creative Analyst no Talenses Group · São Paulo', 'Designer · Creative Analyst at Talenses Group · São Paulo, Brazil'))}</p>
+<p class="sub">{e(('Creative Analyst & UI/UX Designer · São Paulo', 'Creative Analyst & UI/UX Designer · São Paulo, Brazil'))}</p>
 <div class="contact"><a href="mailto:{EMAIL}">{EMAIL}</a><a href="{SITE}/{'' if LANG == 'pt' else 'en/'}">{SITE.replace('https://', '')}{'' if LANG == 'pt' else '/en'}</a><a href="{LINKEDIN}">linkedin.com/in/lucasantosoliveira</a><a href="{BEHANCE}">behance.net/lucasoliveira107</a></div>
 
 <h2>{e(('Resumo', 'Summary'))}</h2>
-<p>{e(('Designer com mais de 5 anos entre criação, vídeo e digital. Cuido da comunicação visual de um ecossistema de marcas: identidade visual, editorial, sites e landing pages, motion e produto. Desenho no Figma e também programo o que desenho, do site estático ao produto completo.',
-       'Designer with 5+ years across creative, video and digital. I look after the visual communication of a whole brand ecosystem: visual identity, editorial, websites and landing pages, motion and product. I design in Figma and also code what I design, from static sites to a full product.'))}</p>
+<p>{e(('Trabalho com design desde 2017, entre criação, vídeo, digital e UI/UX. Cuido da comunicação visual de um ecossistema de marcas: identidade visual, editorial, sites e landing pages, motion e produto. Desenho no Figma e também programo o que desenho, do site estático ao produto completo.',
+       'Working in design since 2017, across creative, video, digital and UI/UX. I look after the visual communication of a whole brand ecosystem: visual identity, editorial, websites and landing pages, motion and product. I design in Figma and also code what I design, from static sites to a full product.'))}</p>
 
 <h2>{e(('Experiência', 'Experience'))}</h2>{exp}
 
@@ -957,7 +957,7 @@ ul {{ margin: 0; padding-left: 14pt; }} li {{ margin-bottom: 3pt; }}
 
 <div class="cols">
   <div><h2>{e(('Competências', 'Skills'))}</h2><p>{e(('Identidade visual · Editorial e impressos · Web design e landing pages · UI, produto e design systems · Motion e edição de vídeo · Social media', 'Visual identity · Editorial and print · Web design and landing pages · UI, product and design systems · Motion and video editing · Social media'))}</p></div>
-  <div><h2>{e(('Ferramentas', 'Tools'))}</h2><p>Figma · Photoshop · Illustrator · InDesign · After Effects · Premiere · Lightroom · HTML/CSS/JS · React · Replit</p></div>
+  <div><h2>{e(('Ferramentas', 'Tools'))}</h2><p>Figma · Photoshop · Illustrator · InDesign · After Effects · Premiere · Lightroom · HTML/CSS/JS · React · Replit · {e(('Automação de processos com IA', 'AI process automation'))}</p></div>
 </div>
 
 <h2>{e(('Formação', 'Education'))}</h2>
