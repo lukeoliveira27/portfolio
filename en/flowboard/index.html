@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FlowBoard: case study · Lucas Oliveira</title>
+<meta name="description" content="How a tool I built to cope with my own ADHD became a request management product for communications teams: origin, research, design decisions, testing and w">
+<link rel="canonical" href="https://lukeoliveira27.github.io/portfolio/en/flowboard/">
+<link rel="alternate" hreflang="pt-BR" href="https://lukeoliveira27.github.io/portfolio/flowboard/">
+<link rel="alternate" hreflang="en" href="https://lukeoliveira27.github.io/portfolio/en/flowboard/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FlowBoard: case study · Lucas Oliveira">
+<meta property="og:description" content="How a tool I built to cope with my own ADHD became a request management product for communications teams: origin, research, design decisions, testing and w">
+<meta property="og:url" content="https://lukeoliveira27.github.io/portfolio/en/flowboard/">
+<meta property="og:image" content="https://lukeoliveira27.github.io/portfolio/assets/img/og-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+
+</head>
+<body class="page-case page-case--flow page-study">
+<header class="nav">
+  <a href="../#topo" class="nav__name">Lucas Oliveira</a>
+  <nav aria-label="Main">
+    <a href="../#trabalhos">Work</a>
+    <a href="../#motion">Motion</a>
+    <a href="../#sobre">About</a>
+    <a class="nav__lang" href="../../flowboard/" hreflang="pt-BR" lang="pt-BR">PT</a>
+    <a href="../#contato" class="nav__cta">Let&#x27;s talk</a>
+  </nav>
+</header>
+
+<main id="topo">
+  <header class="ch wrap">
+    <a class="ch__back" href="../#trabalhos">← All work</a>
+    <p class="eyebrow">FlowBoard · Case study</p>
+    <h1 class="ch__title ch__title--long">Work shouldn&#x27;t require you to hold everything in your head.</h1>
+    <p class="ch__lead">How a tool I built to cope with my own ADHD became a request management product for communications teams: origin, research, design decisions, testing and what I learned along the way.</p>
+    <dl class="ch__meta">
+      <div><dt>My role</dt><dd>Concept, research, UX/UI, design system and development</dd></div>
+      <div><dt>Timeline</dt><dd>2026, continuously evolving</dd></div>
+      <div><dt>Tools</dt><dd>Figma · Maze · React · TypeScript · Replit</dd></div>
+    </dl>
+    <div class="case__links"><a class="link" href="https://useflowboard.com/?utm_source=portfolio&utm_medium=referral&utm_campaign=portfolio-lucas" target="_blank" rel="noopener">Visit FlowBoard ↗</a><a class="link link--muted" href="../cases/flowboard.html">See the project summary</a></div>
+  </header>
+
+  <figure class="ch__cover zoom"><img src="../../assets/img/fb-kanban.webp" alt="FlowBoard board in kanban view" loading="lazy" width="2000" height="1388" loading="eager"></figure>
+
+  <section class="wrap cs">
+    <h2 class="cs__h">The origin</h2>
+    <div class="cs__body"><p>FlowBoard didn&#x27;t come from market research. It came from me not being able to keep the state of my work in my head. I kept building small fixes so I wouldn&#x27;t lose the thread: a list here, a board there, a nudge that arrived before the deadline. At some point those pieces came together and became a product.</p><p>My ADHD diagnosis came after the tool, and it explained why those fixes worked. Being organised doesn&#x27;t have to be a talent each person either has or lacks. It can be a condition the tool provides.</p><p>That changed how I design. Working memory, sense of time and tolerance to stimulus became scarce resources, and every screen has to spare all three. When it works for someone with ADHD, it usually works better for everyone.</p>
+      <blockquote class="study-quote">Work shouldn&#x27;t require you to hold everything in your head.</blockquote>
+    </div>
+  </section>
+
+  <section class="wrap cs">
+    <h2 class="cs__h">The problem</h2>
+    <div class="cs__body"><p>Communications teams get requests from everywhere: email, chat, meetings, hallway conversations. Requests arrive fast and get lost fast, and whoever handles them becomes the memory of the process. To know what is late, awaiting approval or stuck, someone has to ask.</p><p>So I wouldn&#x27;t design from my own experience alone, I ran a field survey with 28 respondents. I expected to hear about workload and distraction. The biggest difficulty they named was something else: depending on someone else and not knowing where things stand. Six answers described some version of “I keep waiting and don&#x27;t know if it&#x27;s done yet”.</p>
+      <ul class="study-stats"><li><b>28</b><span>field survey respondents</span></li><li><b>50%</b><span>work more remotely than they did in the office</span></li><li><b>43%</b><span>sometimes can&#x27;t switch off</span></li></ul>
+      <p>The last two numbers showed that the problem doesn&#x27;t end at delivery. Nothing signals that the day is over, and that is one more thing the mind has to hold.</p>
+    </div>
+  </section>
+
+  <section class="wrap cs">
+    <h2 class="cs__h">Who it is for</h2>
+    <div class="cs__body"><p>For teams that live by requests and deadlines: communications, marketing, creative, agencies and studios serving several brands at once. The product has two sides, and one person who can be on either of them.</p>
+      <ul class="study-list"><li><b>Requesters</b><p>Want to file a request in a few fields and follow it without sending a message to ask.</p></li><li><b>The team</b><p>Need a clear queue, to know what to do now and to be able to show what is stuck and why.</p></li><li><b>People who get distracted easily</b><p>Freeze when starting or lose track of time. This person isn&#x27;t an edge case: they are the design criterion.</p></li></ul>
+    </div>
+  </section>
+
+  <section class="wrap cs">
+    <h2 class="cs__h">Design decisions</h2>
+    <div class="cs__body cs__body--wide">
+      <div class="step">
+        <div class="step__text"><span class="step__n">01</span><h3 class="step__t">The request at the centre</h3><p>Board, table, calendar, daily and projects are five ways of looking at the same request. No new screen becomes a separate system, because every extra system is one more thing to remember to feed.</p></div>
+        <div class="cf-grid"><figure class="cf cf--wide zoom"><img src="../../assets/img/fb-daily.webp" alt="Team daily, with each person&#x27;s tasks for the day" loading="lazy" width="2000" height="1388"><figcaption>Team daily, with each person&#x27;s tasks for the day</figcaption></figure></div>
+      </div>
+      <div class="step">
+        <div class="step__text"><span class="step__n">02</span><h3 class="step__t">Progress visible without asking</h3><p>Status, owner, deadline and steps live on the card itself, and the bar shows how much of the checklist is done. Requesters see where things are without messaging anyone, and a paused request keeps the reason it was paused. It is the direct answer to what the survey pointed out.</p></div>
+        <div class="cf-grid"><figure class="cf cf--wide zoom"><img src="../../assets/img/fb-home.webp" alt="Home with the daily and today&#x27;s priorities" loading="lazy" width="2000" height="1388"><figcaption>Home with the daily and today&#x27;s priorities</figcaption></figure></div>
+      </div>
+      <div class="step">
+        <div class="step__text"><span class="step__n">03</span><h3 class="step__t">Optional focus, no labels</h3><p>Focus features are described by situation, not by diagnosis: gentle nudges, suggestions, calm mode and comfortable reading. Nobody has to identify themselves to switch on what helps, and those who don&#x27;t need it see nothing extra.</p></div>
+        <div class="cf-grid"><figure class="cf cf--two zoom"><img src="../../assets/img/fb-avisos.webp" alt="Open task with gentle nudges and suggestions" loading="lazy" width="2000" height="1318"><figcaption>Open task with gentle nudges and suggestions</figcaption></figure><figure class="cf cf--phone zoom"><img src="../../assets/img/fb-foco.webp" alt="Focus and wellbeing settings on mobile" loading="lazy" width="780" height="1688"><figcaption>Focus and wellbeing settings on mobile</figcaption></figure></div>
+      </div>
+      <div class="step">
+        <div class="step__text"><span class="step__n">04</span><h3 class="step__t">The day has a start and an end</h3><p>The daily opens the day with what matters most. Notifications arrive grouped in a digest instead of pinging all day, and an end-of-day moment closes the day explicitly. These features exist for mental health, not interface convenience.</p></div>
+        <div class="cf-grid"><figure class="cf cf--two zoom"><img src="../../assets/img/fb-email.webp" alt="Daily digest email" loading="lazy" width="1000" height="1064"><figcaption>Daily digest email</figcaption></figure><figure class="cf cf--phone zoom"><img src="../../assets/img/fb-mob-daily.webp" alt="Daily on mobile" loading="lazy" width="900" height="1947"><figcaption>Daily on mobile</figcaption></figure></div>
+      </div>
+      <div class="step">
+        <div class="step__text"><span class="step__n">05</span><h3 class="step__t">Colour with a fixed job</h3><p>The “graphite and sky” identity uses graphite, sky blue and beige, with orange only in small brand details. Status colours never mix with the brand, because a colour that changes meaning makes people relearn the screen. It all became a Figma design system, with light and dark variables mirroring the code.</p></div>
+        <div class="cf-grid"><figure class="cf cf--wide zoom"><img src="../../assets/img/fb-fundamentos.webp" alt="Design system foundations: colours, type and spacing" loading="lazy" width="1440" height="1100"><figcaption>Design system foundations: colours, type and spacing</figcaption></figure></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap cs">
+    <h2 class="cs__h">The process</h2>
+    <div class="cs__body"><p>Much of this process gained method during my postgraduate course in UX/UI and Digital Products at EBAC, which I&#x27;m now finishing. I used FlowBoard as the subject of every assignment, so each stage below was done on the real product, not on a made-up case.</p>
+      <ol class="study-proc"><li><b>Field research</b><p>28 respondents and one open question that changed the product&#x27;s priorities: waiting weighed more than distraction.</p></li><li><b>Heuristics and references</b><p>I reviewed work management tools through the lens of working memory, sense of time and stimulus load.</p></li><li><b>Low fidelity</b><p>Wireframes to get each screen&#x27;s hierarchy right before thinking about colour.</p></li><li><b>Design system</b><p>Colour, type, spacing and components in Figma, with light and dark variables matching the code tokens.</p></li><li><b>High-fidelity prototype</b><p>More than 120 screens in Figma, with the main flows clickable on desktop and mobile.</p></li><li><b>Usability testing</b><p>An unmoderated test script with four hypotheses and two missions: create a request and complete a step. I built it in Maze with the Figma prototype, set the expected path for each mission and ran a full dry run before opening it. The round with five participants is the next step.</p></li><li><b>Code</b><p>I code what I design, in React and TypeScript. The distance between a decision and a working screen stays short.</p></li></ol>
+    </div>
+  </section>
+
+  <section class="cs-result">
+    <div class="wrap">
+      <h2 class="cs__h">In numbers</h2>
+      <ul class="facts"><li><b>28</b><span>field survey respondents</span></li><li><b>+120</b><span>screens designed in Figma</span></li><li><b>4</b><span>usability test hypotheses</span></li><li><b>5</b><span>ways to view the same request</span></li></ul>
+    </div>
+  </section>
+
+  <section class="wrap cs">
+    <h2 class="cs__h">Screens</h2>
+    <div class="cs__body cs__body--wide"><div class="cf-grid"><figure class="cf cf--wide zoom"><div class="browser"><span></span><span></span><span></span><b>useflowboard.com</b></div><img src="../../assets/img/fb-site.webp" alt="FlowBoard website" loading="lazy" width="2000" height="1250"><figcaption>FlowBoard website</figcaption></figure><figure class="cf cf--two zoom"><img src="../../assets/img/fb-kanban-dark.webp" alt="Board in dark mode" loading="lazy" width="2000" height="1388"><figcaption>Board in dark mode</figcaption></figure><figure class="cf cf--phone zoom"><img src="../../assets/img/fb-mob-board.webp" alt="Board on mobile" loading="lazy" width="900" height="1947"><figcaption>Board on mobile</figcaption></figure></div></div>
+  </section>
+
+  <section class="wrap cs">
+    <h2 class="cs__h">What I learned</h2>
+    <div class="cs__body">
+      <ul class="study-list study-list--learn"><li><b>The research corrected my hypothesis.</b><p>I thought the main problem was distraction. The answers pointed to waiting. That became the next improvement to the queue: showing how long a request has been stuck and who needs to act to unblock it.</p></li><li><b>Cognitive accessibility is good design for everyone.</b><p>The features that started out for me, like a day with an end, grouped notifications and less on-screen stimulus, are the ones that make the most sense for the whole team.</p></li><li><b>Write down the hypothesis I want to break.</b><p>In the test script I wrote down which hypothesis I expected to fail: that the progress bar, sitting next to the deadline, would be read as time elapsed instead of steps completed. Knowing where I might be wrong makes the test more honest.</p></li><li><b>Designing and coding the same thing.</b><p>With Figma variables mirroring the code, every design decision comes with a known cost. That pushed me to decide early and to think twice before every new screen.</p></li></ul>
+      <p class="study-next">Next steps: run the test with five people, bring time-stuck onto the card and turn priority into a rule the whole team can see, rather than a call made by whoever handles the request.</p>
+    </div>
+  </section>
+
+
+  <section class="fbcta" aria-labelledby="fbcta-title">
+    <div class="wrap fbcta__in">
+      <div class="fbcta__text">
+        <img class="fbcta__logo" src="../../assets/img/flowboard-logo.svg" alt="FlowBoard" width="279" height="44">
+        <h2 id="fbcta-title" class="fbcta__title">FlowBoard: useful on every working day.</h2>
+        <p class="fbcta__lead">Board, daily, editorial calendar and team requests in one place. Made by someone who works in creative and communications, for teams that live by deadlines.</p>
+        <div class="fbcta__actions">
+          <a class="fbcta__btn" href="https://useflowboard.com/?utm_source=portfolio&utm_medium=referral&utm_campaign=portfolio-lucas" target="_blank" rel="noopener">Start for free ↗</a>
+          <a class="fbcta__link" href="https://useflowboard.com/planos?utm_source=portfolio&utm_medium=referral&utm_campaign=portfolio-lucas" target="_blank" rel="noopener">See plans</a>
+        </div>
+        <p class="fbcta__note">No credit card. The Agency plan is unlocked for the first 14 days.</p>
+      </div>
+      <div class="fbcta__shot" aria-hidden="true">
+        <img src="../../assets/img/fb-mob-board.webp" alt="" loading="lazy" width="900" height="1947">
+      </div>
+    </div>
+  </section>
+
+  <a class="next" href="../cases/board-circle.html">
+    <span class="eyebrow">Next case</span>
+    <span class="next__title">Board Circle <span aria-hidden="true">→</span></span>
+  </a>
+</main>
+
+<footer class="foot wrap">
+  <span>© 2026 Lucas Oliveira</span>
+  <span class="hand foot__made"><i class="ico" style="--i:url(../../assets/icons/cafe.png)" aria-hidden="true"></i>made with lots of coffee and Eddie on my lap</span>
+</footer>
+
+<dialog class="lightbox" aria-label="Enlarge">
+  <button class="lightbox__close" aria-label="Close">×</button>
+  <img alt="">
+</dialog>
+
+<script>window.I18N = { pause: "Pause video", play: "Play video", zoom: "Enlarge", swipe: "swipe for more" };</script>
+<script src="../../main.js"></script>
+</body>
+</html>

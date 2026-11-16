@@ -53,6 +53,7 @@ UI = {
     "skip": ("Pular para os trabalhos", "Skip to work"),
     "see_case": ("Ver case completo", "See full case"),
     "see_live": ("Ver site no ar", "See it live"),
+    "see_study": ("Ler o estudo de caso", "Read the case study"),
     "back": ("Todos os trabalhos", "All work"),
     "next": ("Próximo case", "Next case"),
     "role": ("Meu papel", "My role"),
@@ -479,6 +480,310 @@ CASES = [
 ]
 
 
+# ---------------------------------------------------------------- estudo de caso do FlowBoard (/flowboard/)
+
+FB_STUDY = {
+    "statement": ("Trabalho não deveria exigir que você segure tudo na cabeça.",
+                  "Work shouldn't require you to hold everything in your head."),
+    "lead": ("Como uma ferramenta que eu construí para dar conta do meu próprio TDAH virou um produto de gestão de "
+             "demandas para times de comunicação: origem, pesquisa, decisões de design, testes e o que aprendi no caminho.",
+             "How a tool I built to cope with my own ADHD became a request management product for communications teams: "
+             "origin, research, design decisions, testing and what I learned along the way."),
+    "role": ("Ideia, pesquisa, UX/UI, design system e desenvolvimento", "Concept, research, UX/UI, design system and development"),
+    "period": ("2026, em evolução contínua", "2026, continuously evolving"),
+    "tools": "Figma · Maze · React · TypeScript · Replit",
+    "origin": [
+        ("O FlowBoard não nasceu de uma pesquisa de mercado. Nasceu de eu não conseguir manter o estado do trabalho na "
+         "cabeça. Fui construindo pequenas soluções para não perder o fio: uma lista aqui, um quadro ali, um aviso que "
+         "chegava antes do prazo. Uma hora essas peças se juntaram e viraram um produto.",
+         "FlowBoard didn't come from market research. It came from me not being able to keep the state of my work in my "
+         "head. I kept building small fixes so I wouldn't lose the thread: a list here, a board there, a nudge that "
+         "arrived before the deadline. At some point those pieces came together and became a product."),
+        ("O diagnóstico de TDAH veio depois da ferramenta, e explicou por que aquelas soluções funcionavam. Organização "
+         "não precisa ser um talento que cada pessoa tem ou não tem. Pode ser uma condição que a ferramenta oferece.",
+         "My ADHD diagnosis came after the tool, and it explained why those fixes worked. Being organised doesn't have "
+         "to be a talent each person either has or lacks. It can be a condition the tool provides."),
+        ("Isso mudou o meu jeito de desenhar. Memória de trabalho, percepção de tempo e tolerância a estímulo viraram "
+         "recursos escassos, e cada tela precisa poupar os três. Quando funciona para quem tem TDAH, costuma funcionar "
+         "melhor para todo mundo.",
+         "That changed how I design. Working memory, sense of time and tolerance to stimulus became scarce resources, "
+         "and every screen has to spare all three. When it works for someone with ADHD, it usually works better for everyone."),
+    ],
+    "problem": [
+        ("Times de comunicação recebem pedido de todo lado: e-mail, mensagem, reunião, conversa de corredor. O pedido "
+         "chega rápido e se perde rápido, e quem atende vira a memória do processo. Para saber o que está atrasado, em "
+         "aprovação ou parado, alguém precisa perguntar.",
+         "Communications teams get requests from everywhere: email, chat, meetings, hallway conversations. Requests "
+         "arrive fast and get lost fast, and whoever handles them becomes the memory of the process. To know what is "
+         "late, awaiting approval or stuck, someone has to ask."),
+        ("Para não desenhar só a partir da minha experiência, fiz uma pesquisa de campo com 28 respondentes. Eu "
+         "esperava ouvir sobre excesso de trabalho e distração. A maior dificuldade citada foi outra: depender de outra "
+         "pessoa e não saber em que pé a coisa está. Seis respostas descreveram alguma versão de “fico esperando e não sei se já foi feito”.",
+         "So I wouldn't design from my own experience alone, I ran a field survey with 28 respondents. I expected to "
+         "hear about workload and distraction. The biggest difficulty they named was something else: depending on "
+         "someone else and not knowing where things stand. Six answers described some version of “I keep waiting and "
+         "don't know if it's done yet”."),
+    ],
+    "stats": [("28", ("respondentes na pesquisa de campo", "field survey respondents")),
+              ("50%", ("trabalham mais no remoto do que no presencial", "work more remotely than they did in the office")),
+              ("43%", ("às vezes não conseguem desligar", "sometimes can't switch off"))],
+    "problem_after": [
+        ("Os dois últimos números mostraram que o problema não termina na entrega. Nada sinaliza que o dia acabou, e "
+         "isso também é trabalho que a cabeça precisa segurar.",
+         "The last two numbers showed that the problem doesn't end at delivery. Nothing signals that the day is over, "
+         "and that is one more thing the mind has to hold."),
+    ],
+    "who_intro": ("Para times que vivem de pedido e prazo: comunicação, marketing, criação, agências e estúdios que "
+                  "atendem várias marcas ao mesmo tempo. O produto tem dois lados, e uma pessoa que pode estar em qualquer um deles.",
+                  "For teams that live by requests and deadlines: communications, marketing, creative, agencies and "
+                  "studios serving several brands at once. The product has two sides, and one person who can be on either of them."),
+    "who": [
+        (("Quem pede", "Requesters"),
+         ("Quer abrir o pedido em poucos campos e acompanhar o andamento sem mandar mensagem perguntando.",
+          "Want to file a request in a few fields and follow it without sending a message to ask.")),
+        (("Quem atende", "The team"),
+         ("Precisa de uma fila clara, saber o que fazer agora e conseguir mostrar o que está parado e por quê.",
+          "Need a clear queue, to know what to do now and to be able to show what is stuck and why.")),
+        (("Quem se distrai fácil", "People who get distracted easily"),
+         ("Trava na hora de começar ou perde a noção do tempo. Essa pessoa não é um caso à parte: é o critério de desenho.",
+          "Freeze when starting or lose track of time. This person isn't an edge case: they are the design criterion.")),
+    ],
+    "decisions": [
+        {
+            "t": ("A demanda no centro", "The request at the centre"),
+            "text": [("Board, tabela, calendário, daily e projetos são cinco jeitos de ver a mesma demanda. Nenhuma tela "
+                      "nova vira um sistema à parte, porque cada sistema a mais é mais uma coisa para lembrar de alimentar.",
+                      "Board, table, calendar, daily and projects are five ways of looking at the same request. No new "
+                      "screen becomes a separate system, because every extra system is one more thing to remember to feed.")],
+            "figs": [("wide", "fb-daily.webp", ("Daily do time, com as demandas do dia por pessoa", "Team daily, with each person's tasks for the day"))],
+        },
+        {
+            "t": ("O andamento visível sem perguntar", "Progress visible without asking"),
+            "text": [("Status, responsável, prazo e etapas ficam no próprio cartão, e a barra mostra quanto do checklist "
+                      "já andou. Quem pediu vê onde está sem mandar mensagem, e uma demanda pausada guarda o motivo da pausa. "
+                      "É a resposta direta ao que a pesquisa apontou.",
+                      "Status, owner, deadline and steps live on the card itself, and the bar shows how much of the checklist "
+                      "is done. Requesters see where things are without messaging anyone, and a paused request keeps the reason "
+                      "it was paused. It is the direct answer to what the survey pointed out.")],
+            "figs": [("wide", "fb-home.webp", ("Home com a daily e as prioridades do dia", "Home with the daily and today's priorities"))],
+        },
+        {
+            "t": ("Foco opcional e sem rótulo", "Optional focus, no labels"),
+            "text": [("Os recursos de foco são descritos pela situação, não pelo diagnóstico: avisos gentis, sugestões, "
+                      "modo calmo e leitura confortável. Ninguém precisa se identificar para ligar o que ajuda, e quem não "
+                      "precisa não vê nada a mais.",
+                      "Focus features are described by situation, not by diagnosis: gentle nudges, suggestions, calm mode "
+                      "and comfortable reading. Nobody has to identify themselves to switch on what helps, and those who "
+                      "don't need it see nothing extra.")],
+            "figs": [("two", "fb-avisos.webp", ("Demanda aberta com avisos gentis e sugestões", "Open task with gentle nudges and suggestions")),
+                     ("phone", "fb-foco.webp", ("Configurações de foco e bem-estar no celular", "Focus and wellbeing settings on mobile"))],
+        },
+        {
+            "t": ("O dia tem começo e fim", "The day has a start and an end"),
+            "text": [("A daily abre o dia com o que é prioridade. Os avisos chegam agrupados num resumo, em vez de pingar "
+                      "o tempo todo, e o fim de expediente fecha o dia de forma explícita. Essas funções existem por saúde "
+                      "mental, não por conveniência de interface.",
+                      "The daily opens the day with what matters most. Notifications arrive grouped in a digest instead of "
+                      "pinging all day, and an end-of-day moment closes the day explicitly. These features exist for mental "
+                      "health, not interface convenience.")],
+            "figs": [("two", "fb-email.webp", ("E-mail de resumo diário", "Daily digest email")),
+                     ("phone", "fb-mob-daily.webp", ("Daily no celular", "Daily on mobile"))],
+        },
+        {
+            "t": ("Cor com função fixa", "Colour with a fixed job"),
+            "text": [("A identidade “grafite e céu” usa grafite, azul-céu e bege, com laranja só em detalhes da marca. As "
+                      "cores de status nunca se misturam com a marca, porque cor que muda de significado obriga a pessoa a "
+                      "reaprender a tela. Tudo virou um design system no Figma, com variáveis de modo claro e escuro espelhando o código.",
+                      "The “graphite and sky” identity uses graphite, sky blue and beige, with orange only in small brand "
+                      "details. Status colours never mix with the brand, because a colour that changes meaning makes people "
+                      "relearn the screen. It all became a Figma design system, with light and dark variables mirroring the code.")],
+            "figs": [("wide", "fb-fundamentos.webp", ("Fundamentos do design system: cores, textos e espaçamentos", "Design system foundations: colours, type and spacing"))],
+        },
+    ],
+    "process_intro": [
+        ("Boa parte desse processo ganhou método na Pós-Graduação em UX/UI e Produtos Digitais da EBAC, que estou "
+         "terminando. Usei o FlowBoard como objeto de todos os exercícios, então cada etapa abaixo foi feita no produto de verdade, não num caso inventado.",
+         "Much of this process gained method during my postgraduate course in UX/UI and Digital Products at EBAC, which "
+         "I'm now finishing. I used FlowBoard as the subject of every assignment, so each stage below was done on the real "
+         "product, not on a made-up case."),
+    ],
+    "process": [
+        (("Pesquisa de campo", "Field research"),
+         ("28 respondentes e uma pergunta aberta que mudou a prioridade do produto: a espera pesava mais do que a distração.",
+          "28 respondents and one open question that changed the product's priorities: waiting weighed more than distraction.")),
+        (("Heurísticas e referências", "Heuristics and references"),
+         ("Analisei ferramentas de gestão pela lente de memória de trabalho, percepção de tempo e carga de estímulo.",
+          "I reviewed work management tools through the lens of working memory, sense of time and stimulus load.")),
+        (("Baixa fidelidade", "Low fidelity"),
+         ("Wireframes para acertar a hierarquia de cada tela antes de pensar em cor.",
+          "Wireframes to get each screen's hierarchy right before thinking about colour.")),
+        (("Design system", "Design system"),
+         ("Cores, tipografia, espaçamento e componentes no Figma, com variáveis de claro e escuro iguais aos tokens do código.",
+          "Colour, type, spacing and components in Figma, with light and dark variables matching the code tokens.")),
+        (("Protótipo de alta fidelidade", "High-fidelity prototype"),
+         ("Mais de 120 telas no Figma, com os fluxos principais navegáveis no computador e no celular.",
+          "More than 120 screens in Figma, with the main flows clickable on desktop and mobile.")),
+        (("Teste de usabilidade", "Usability testing"),
+         ("Roteiro de teste não moderado com quatro hipóteses e duas missões: criar uma demanda e concluir uma etapa. "
+          "Montei no Maze com o protótipo do Figma, defini o caminho esperado de cada missão e fiz o teste completo antes de "
+          "liberar. A rodada com cinco participantes é o próximo passo.",
+          "An unmoderated test script with four hypotheses and two missions: create a request and complete a step. I built "
+          "it in Maze with the Figma prototype, set the expected path for each mission and ran a full dry run before "
+          "opening it. The round with five participants is the next step.")),
+        (("Código", "Code"),
+         ("Eu mesmo programo o que desenho, em React e TypeScript. A distância entre decidir e ver a tela funcionando fica curta.",
+          "I code what I design, in React and TypeScript. The distance between a decision and a working screen stays short.")),
+    ],
+    "facts": [("28", ("respondentes na pesquisa de campo", "field survey respondents")),
+              ("+120", ("telas desenhadas no Figma", "screens designed in Figma")),
+              ("4", ("hipóteses no teste de usabilidade", "usability test hypotheses")),
+              ("5", ("jeitos de ver a mesma demanda", "ways to view the same request"))],
+    "gallery": [
+        ("wide", "fb-site.webp", ("Site do FlowBoard", "FlowBoard website"), "useflowboard.com"),
+        ("two", "fb-kanban-dark.webp", ("Board no modo escuro", "Board in dark mode"), None),
+        ("phone", "fb-mob-board.webp", ("Board no celular", "Board on mobile"), None),
+    ],
+    "learn": [
+        (("A pesquisa corrigiu a minha hipótese.", "The research corrected my hypothesis."),
+         ("Eu achava que o problema principal era distração. As respostas apontaram espera. Isso virou a próxima melhoria "
+          "da fila: mostrar há quanto tempo uma demanda está parada e quem precisa agir para destravar.",
+          "I thought the main problem was distraction. The answers pointed to waiting. That became the next improvement "
+          "to the queue: showing how long a request has been stuck and who needs to act to unblock it.")),
+        (("Acessibilidade cognitiva é bom design para todo mundo.", "Cognitive accessibility is good design for everyone."),
+         ("Os recursos que nasceram para mim, como o dia com fim, os avisos agrupados e menos estímulo na tela, são os que "
+          "mais fazem sentido para o time inteiro.",
+          "The features that started out for me, like a day with an end, grouped notifications and less on-screen stimulus, "
+          "are the ones that make the most sense for the whole team.")),
+        (("Escrever a hipótese que eu quero derrubar.", "Write down the hypothesis I want to break."),
+         ("No roteiro do teste deixei registrado qual hipótese eu esperava ver cair: que a barra de progresso, ao lado do "
+          "prazo, fosse lida como tempo passado e não como etapas concluídas. Saber onde posso estar errado deixa o teste mais honesto.",
+          "In the test script I wrote down which hypothesis I expected to fail: that the progress bar, sitting next to the "
+          "deadline, would be read as time elapsed instead of steps completed. Knowing where I might be wrong makes the test more honest.")),
+        (("Desenhar e programar a mesma coisa.", "Designing and coding the same thing."),
+         ("Com as variáveis do Figma espelhando o código, cada decisão de design já nasce com custo conhecido. Isso me "
+          "obrigou a decidir cedo e a pensar duas vezes antes de cada tela nova.",
+          "With Figma variables mirroring the code, every design decision comes with a known cost. That pushed me to decide "
+          "early and to think twice before every new screen.")),
+    ],
+    "next_steps": ("Próximos passos: rodar o teste com cinco pessoas, levar o tempo parado para o cartão e transformar a "
+                   "prioridade numa regra que todo o time enxergue, não numa escolha de quem atende.",
+                   "Next steps: run the test with five people, bring time-stuck onto the card and turn priority into a rule "
+                   "the whole team can see, rather than a call made by whoever handles the request."),
+}
+
+
+def fb_study_page():
+    s = FB_STUDY
+    p = "../" if LANG == "pt" else "../../"
+    home = "../"
+    paras = lambda lst: "".join(f"<p>{e(x)}</p>" for x in lst)
+    stats = "".join(f'<li><b>{n}</b><span>{e(t)}</span></li>' for n, t in s["stats"])
+    who = "".join(f'<li><b>{e(t)}</b><p>{e(d)}</p></li>' for t, d in s["who"])
+    decisions = ""
+    for n, d in enumerate(s["decisions"], 1):
+        figs = "".join(fig(p, k, src, a) for k, src, a in d["figs"])
+        decisions += f"""
+      <div class="step">
+        <div class="step__text"><span class="step__n">{n:02d}</span><h3 class="step__t">{e(d['t'])}</h3>{paras(d['text'])}</div>
+        <div class="cf-grid">{figs}</div>
+      </div>"""
+    proc = "".join(f'<li><b>{e(t)}</b><p>{e(d)}</p></li>' for t, d in s["process"])
+    facts = "".join(f'<li><b>{n}</b><span>{e(t)}</span></li>' for n, t in s["facts"])
+    gallery = "".join(fig(p, k, src, a, u) for k, src, a, u in s["gallery"])
+    learn = "".join(f'<li><b>{e(t)}</b><p>{e(d)}</p></li>' for t, d in s["learn"])
+    nxt = CASES[1]
+    path = ("" if LANG == "pt" else "en/") + "flowboard/"
+    alt_path = ("en/" if LANG == "pt" else "") + "flowboard/"
+    switch = "../en/flowboard/" if LANG == "pt" else "../../flowboard/"
+
+    out = head(p, L(("FlowBoard: estudo de caso · Lucas Oliveira", "FlowBoard: case study · Lucas Oliveira")),
+               L(s["lead"])[:155], path, alt_path)
+    out += f"""
+<body class="page-case page-case--flow page-study">
+{nav(p, home).replace('{LANG_SWITCH}', switch)}
+
+<main id="topo">
+  <header class="ch wrap">
+    <a class="ch__back" href="{home}#trabalhos">← {e(UI['back'])}</a>
+    <p class="eyebrow">{e(('FlowBoard · Estudo de caso', 'FlowBoard · Case study'))}</p>
+    <h1 class="ch__title ch__title--long">{e(s['statement'])}</h1>
+    <p class="ch__lead">{e(s['lead'])}</p>
+    <dl class="ch__meta">
+      <div><dt>{e(UI['role'])}</dt><dd>{e(s['role'])}</dd></div>
+      <div><dt>{e(('Período', 'Timeline'))}</dt><dd>{e(s['period'])}</dd></div>
+      <div><dt>{e(UI['tools'])}</dt><dd>{e(s['tools'])}</dd></div>
+    </dl>
+    <div class="case__links"><a class="link" href="{FB_URL}" target="_blank" rel="noopener">{e(('Conhecer o FlowBoard', 'Visit FlowBoard'))} ↗</a><a class="link link--muted" href="../cases/flowboard.html">{e(('Ver o resumo do projeto', 'See the project summary'))}</a></div>
+  </header>
+
+  <figure class="ch__cover zoom">{img(p, 'fb-kanban.webp', ('Board do FlowBoard em kanban', 'FlowBoard board in kanban view'), ' loading="eager"')}</figure>
+
+  <section class="wrap cs">
+    <h2 class="cs__h">{e(('A origem', 'The origin'))}</h2>
+    <div class="cs__body">{paras(s['origin'])}
+      <blockquote class="study-quote">{e(s['statement'])}</blockquote>
+    </div>
+  </section>
+
+  <section class="wrap cs">
+    <h2 class="cs__h">{e(('O problema', 'The problem'))}</h2>
+    <div class="cs__body">{paras(s['problem'])}
+      <ul class="study-stats">{stats}</ul>
+      {paras(s['problem_after'])}
+    </div>
+  </section>
+
+  <section class="wrap cs">
+    <h2 class="cs__h">{e(('Para quem é', 'Who it is for'))}</h2>
+    <div class="cs__body"><p>{e(s['who_intro'])}</p>
+      <ul class="study-list">{who}</ul>
+    </div>
+  </section>
+
+  <section class="wrap cs">
+    <h2 class="cs__h">{e(('Decisões de design', 'Design decisions'))}</h2>
+    <div class="cs__body cs__body--wide">{decisions}
+    </div>
+  </section>
+
+  <section class="wrap cs">
+    <h2 class="cs__h">{e(UI['process'])}</h2>
+    <div class="cs__body">{paras(s['process_intro'])}
+      <ol class="study-proc">{proc}</ol>
+    </div>
+  </section>
+
+  <section class="cs-result">
+    <div class="wrap">
+      <h2 class="cs__h">{e(('Em números', 'In numbers'))}</h2>
+      <ul class="facts">{facts}</ul>
+    </div>
+  </section>
+
+  <section class="wrap cs">
+    <h2 class="cs__h">{e(('Telas', 'Screens'))}</h2>
+    <div class="cs__body cs__body--wide"><div class="cf-grid">{gallery}</div></div>
+  </section>
+
+  <section class="wrap cs">
+    <h2 class="cs__h">{e(('O que aprendi', 'What I learned'))}</h2>
+    <div class="cs__body">
+      <ul class="study-list study-list--learn">{learn}</ul>
+      <p class="study-next">{e(s['next_steps'])}</p>
+    </div>
+  </section>
+
+{fb_cta(p)}
+  <a class="next" href="../cases/{nxt['slug']}.html">
+    <span class="eyebrow">{e(UI['next'])}</span>
+    <span class="next__title">{nxt['title']} <span aria-hidden="true">→</span></span>
+  </a>
+</main>
+
+{foot(p)}"""
+    return out
+
+
 # ---------------------------------------------------------------- home: mosaicos
 
 def slide(p, kind, src, alt, url=None):
@@ -570,7 +875,7 @@ def case_intro(c, i, p, case_href):
           <h3 class="case__title"><a href="{case_href}">{c['title']}</a></h3>
           <p class="case__text">{e(c['summary'])}</p>
           <ul class="tags">{tags}</ul>
-          <div class="case__links"><a class="btn" href="{case_href}">{e(UI['see_case'])} →</a>{link}</div>
+          <div class="case__links"><a class="btn" href="{case_href}">{e(UI['see_study'] if c['slug'] == 'flowboard' else UI['see_case'])} →</a>{link}</div>
           {note}
         </div>
       </div>"""
@@ -640,7 +945,8 @@ def home():
 
     cases_html = ""
     for i, c in enumerate(CASES, 1):
-        href = f"cases/{c['slug']}.html"
+        # o FlowBoard abre direto o estudo de caso completo
+        href = "flowboard/" if c["slug"] == "flowboard" else f"cases/{c['slug']}.html"
         cases_html += f"""
     <article class="case case--{c['theme']}">
       {case_intro(c, i, p, href)}
@@ -858,6 +1164,9 @@ def case_page(idx):
         vid = f'<figure class="cf cf--wide cf--video">{video(p, name, label)}<figcaption>{e(label)}</figcaption></figure>'
     gallery = "".join(fig(p, k, s, a, u) for k, s, a, u in c["gallery"])
     cover_src, cover_alt = c["cover"]
+    study_top = ""
+    if c["slug"] == "flowboard":
+        study_top = f'<div class="case__links study-cta"><a class="btn" href="../flowboard/">{e(UI["see_study"])} →</a></div>\n    '
     path = ("" if LANG == "pt" else "en/") + f"cases/{c['slug']}.html"
     alt_path = ("en/" if LANG == "pt" else "") + f"cases/{c['slug']}.html"
 
@@ -877,7 +1186,7 @@ def case_page(idx):
       <div><dt>{e(UI['deliv'])}</dt><dd>{e(c['deliv'])}</dd></div>
       <div><dt>{e(UI['tools'])}</dt><dd>{e(c['tools'])}</dd></div>
     </dl>
-    {link}
+    {study_top}{link}
   </header>
 
   <figure class="ch__cover zoom">{img(p, cover_src, cover_alt, ' loading="eager"')}</figure>
@@ -981,6 +1290,7 @@ def main():
         write(base + "index.html", home())
         for i, c in enumerate(CASES):
             write(f"{base}cases/{c['slug']}.html", case_page(i))
+        write(f"{base}flowboard/index.html", fb_study_page())
         write(f"tools/cv-{LANG}.html", cv_page())
     if "--pdf" in sys.argv:
         chrome = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
