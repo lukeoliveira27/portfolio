@@ -717,11 +717,12 @@ def fb_study_page():
     <div class="case__links"><a class="link" href="{FB_URL}" target="_blank" rel="noopener">{e(('Conhecer o FlowBoard', 'Visit FlowBoard'))} ↗</a><a class="link link--muted" href="../cases/flowboard.html">{e(('Ver o resumo do projeto', 'See the project summary'))}</a></div>
   </header>
 
-  <figure class="ch__cover zoom">{img(p, 'fb-kanban.webp', ('Board do FlowBoard em kanban', 'FlowBoard board in kanban view'), ' loading="eager"')}</figure>
+  <div class="ch__cover"><figure class="motion motion--board">{video(p, 'fb-board', ('Animação do board do FlowBoard: uma demanda passa de Iniciar para Em andamento, Em aprovação e Concluído, o progresso sobe de 0/4 para 4/4 e aparece o aviso de que ela foi concluída', 'FlowBoard board animation: a task moves from To do to In progress, In review and Done, its progress goes from 0/4 to 4/4 and a notice says it is done'), ' width="1936" height="1152"')}</figure></div>
 
   <section class="wrap cs">
     <h2 class="cs__h">{e(('A origem', 'The origin'))}</h2>
     <div class="cs__body">{paras(s['origin'])}
+      <figure class="motion motion--origin">{video(p, 'fb-origem', ('Animação: uma lista de pendências, um calendário com o prazo, um quadro improvisado, uma mensagem e um lembrete se juntam num único cartão do FlowBoard, com a frase Tudo num lugar só', 'Animation: a to-do list, a calendar with the deadline, a makeshift board, a message and a reminder come together into a single FlowBoard card, with the line All in one place'), ' width="1936" height="1152"')}</figure>
       <blockquote class="study-quote">{e(s['statement'])}</blockquote>
     </div>
   </section>

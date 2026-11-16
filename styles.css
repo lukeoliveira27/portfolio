@@ -554,3 +554,9 @@ em { font-style: italic; }
   .study-stats li { display: flex; align-items: baseline; gap: 14px; }
   .study-stats span { margin-top: 0; }
 }
+
+/* Motions do estudo do FlowBoard (feitos no Figma, exportados em MP4) */
+.motion { margin: 0; border-radius: var(--radius); overflow: hidden; }
+.motion video { display: block; width: 100%; height: auto; aspect-ratio: 1936 / 1152; }
+.motion--board { background: #f6f4ef; box-shadow: 0 0 0 1px var(--line); }
+.motion--origin { margin: 32px 0 8px; background: var(--paper); }
