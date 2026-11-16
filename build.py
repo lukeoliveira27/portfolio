@@ -178,7 +178,7 @@ CASES = [
             "várias marcas ao mesmo tempo e virou produto: board, daily, calendário editorial, planejamentos, portal de "
             "chamados e recursos de foco que cada pessoa liga só se quiser. Também fiz a marca, o design system, o site e os e-mails.",
             "A work management platform I conceived, designed and coded. It grew out of the routine of serving "
-            "many brands at once and became a product: board, daily, editorial calendar, plans, a request portal and focus "
+            "many brands at once and became a product: board, daily, editorial calendar, planning, a request portal and focus "
             "features each person can switch on if they want. I also made the brand, design system, website and emails."),
         "tags": [("Produto", "Product"), ("UI/UX", "UI/UX"), ("Design system", "Design system"), ("Código", "Code")],
         "link": "https://useflowboard.com/",
@@ -234,10 +234,10 @@ CASES = [
             },
         ],
         "result_text": [
-            ("Hoje o FlowBoard cobre o dia a dia do trabalho, do pedido que chega até a entrega, e tem site próprio, "
-             "planos e e-mails transacionais.",
-             "Today FlowBoard covers the daily work, from incoming request to delivery, and has its own website, "
-             "plans and transactional emails."),
+            ("Hoje o FlowBoard cobre o dia a dia do trabalho, do pedido que chega até a entrega, e tem site próprio "
+             "e e-mails do sistema.",
+             "Today FlowBoard covers the daily work, from incoming request to delivery, and has its own website "
+             "and system emails."),
         ],
         "facts": [("5", ("jeitos de ver a mesma demanda", "ways to view the same request")),
                   ("+120", ("telas desenhadas no Figma", "screens designed in Figma")),
@@ -901,7 +901,6 @@ TIMELINE = [
 
 
 FB_URL = "https://useflowboard.com/?utm_source=portfolio&utm_medium=referral&utm_campaign=portfolio-lucas"
-FB_PLANS = "https://useflowboard.com/planos?utm_source=portfolio&utm_medium=referral&utm_campaign=portfolio-lucas"
 
 
 def fb_cta(p):
@@ -914,10 +913,8 @@ def fb_cta(p):
         <h2 id="fbcta-title" class="fbcta__title">{e(('Use FlowBoard nos seus dias úteis.', 'FlowBoard: useful on every working day.'))}</h2>
         <p class="fbcta__lead">{e(('Board, daily, calendário editorial e os pedidos do time num lugar só. Feito por quem trabalha com criação e comunicação, para times que vivem de prazo.', 'Board, daily, editorial calendar and team requests in one place. Made by someone who works in creative and communications, for teams that live by deadlines.'))}</p>
         <div class="fbcta__actions">
-          <a class="fbcta__btn" href="{FB_URL}" target="_blank" rel="noopener">{e(('Começar grátis', 'Start for free'))} ↗</a>
-          <a class="fbcta__link" href="{FB_PLANS}" target="_blank" rel="noopener">{e(('Ver planos', 'See plans'))}</a>
+          <a class="fbcta__btn" href="{FB_URL}" target="_blank" rel="noopener">{e(('Conhecer o FlowBoard', 'Visit FlowBoard'))} ↗</a>
         </div>
-        <p class="fbcta__note">{e(('Sem cartão de crédito. Nos primeiros 14 dias, o plano Agência fica liberado.', 'No credit card. The Agency plan is unlocked for the first 14 days.'))}</p>
       </div>
       <div class="fbcta__shot" aria-hidden="true">
         <img src="{p}assets/img/fb-mob-board.webp" alt="" loading="lazy" width="900" height="1947">
