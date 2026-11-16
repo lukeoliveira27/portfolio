@@ -174,11 +174,11 @@ CASES = [
         "client": ("Produto autoral · 2026", "Personal product · 2026"),
         "title": "FlowBoard",
         "summary": (
-            "Plataforma de gestão de demandas que eu idealizei, desenhei e programei. Nasceu da rotina de quem atende "
-            "várias marcas ao mesmo tempo e virou produto: board, daily, calendário editorial, planejamentos, portal de "
+            "Plataforma de gestão de demandas que eu idealizei, desenhei e programei. Nasceu quando eu fiquei mais "
+            "sênior e precisei organizar meus próprios prazos e demandas, e virou produto: board, daily, calendário editorial, planejamentos, portal de "
             "chamados e recursos de foco que cada pessoa liga só se quiser. Também fiz a marca, o design system, o site e os e-mails.",
-            "A work management platform I conceived, designed and coded. It grew out of the routine of serving "
-            "many brands at once and became a product: board, daily, editorial calendar, planning, a request portal and focus "
+            "A work management platform I conceived, designed and coded. It started when I became more "
+            "senior and had to manage my own deadlines and requests, and grew into a product: board, daily, editorial calendar, planning, a request portal and focus "
             "features each person can switch on if they want. I also made the brand, design system, website and emails."),
         "tags": [("Produto", "Product"), ("UI/UX", "UI/UX"), ("Design system", "Design system"), ("Código", "Code")],
         "link": "https://useflowboard.com/",
@@ -190,10 +190,10 @@ CASES = [
         "tools": "Figma · React · TypeScript · Replit",
         "cover": ("fb-kanban.webp", ("Board do FlowBoard em kanban", "FlowBoard board in kanban view")),
         "challenge": [
-            ("Times de comunicação costumam atender várias marcas ao mesmo tempo. Os pedidos chegam por e-mail, Teams e "
-             "conversa de corredor, e ninguém tem uma visão única do que estava atrasado, em aprovação ou parado.",
-             "Communications teams often serve several brands at once. Requests come in by email, Teams and hallway "
-             "chats, and nobody has a single view of what was late, waiting for approval or stuck."),
+            ("Quem trabalha com criação e comunicação recebe pedido de todo lado: e-mail, mensagem e conversa de corredor. "
+             "Ninguém tem uma visão única do que está atrasado, em aprovação ou parado.",
+             "People in creative and communications get requests from everywhere: email, chat and hallway conversations. "
+             "Nobody has a single view of what is late, waiting for approval or stuck."),
             ("As ferramentas prontas ou eram genéricas demais, ou viravam mais um sistema para alimentar. Eu queria algo "
              "que organizasse o trabalho sem pesar, inclusive para quem se distrai fácil ou trava na hora de começar.",
              "Off-the-shelf tools were either too generic or became one more system to feed. I wanted something that "
@@ -493,11 +493,12 @@ FB_STUDY = {
     "period": ("2026, em evolução contínua", "2026, continuously evolving"),
     "tools": "Figma · Maze · React · TypeScript · Replit",
     "origin": [
-        ("O FlowBoard não nasceu de uma pesquisa de mercado. Nasceu de eu não conseguir manter o estado do trabalho na "
-         "cabeça. Fui construindo pequenas soluções para não perder o fio: uma lista aqui, um quadro ali, um aviso que "
+        ("O FlowBoard não nasceu de uma pesquisa de mercado. Surgiu num momento de mudança na minha carreira: eu estava "
+         "ficando mais sênior e passei a precisar organizar, eu mesmo, os meus prazos e as minhas demandas. Só que eu não "
+         "conseguia manter o estado do trabalho na cabeça. Fui construindo pequenas soluções para não perder o fio: uma lista aqui, um quadro ali, um aviso que "
          "chegava antes do prazo. Uma hora essas peças se juntaram e viraram um produto.",
-         "FlowBoard didn't come from market research. It came from me not being able to keep the state of my work in my "
-         "head. I kept building small fixes so I wouldn't lose the thread: a list here, a board there, a nudge that "
+         "FlowBoard didn't come from market research. It came at a turning point in my career: I was becoming more senior "
+         "and had to organise my own deadlines and requests. But I couldn't keep the state of my work in my head. I kept building small fixes so I wouldn't lose the thread: a list here, a board there, a nudge that "
          "arrived before the deadline. At some point those pieces came together and became a product."),
         ("O diagnóstico de TDAH veio depois da ferramenta, e explicou por que aquelas soluções funcionavam. Organização "
          "não precisa ser um talento que cada pessoa tem ou não tem. Pode ser uma condição que a ferramenta oferece.",
@@ -534,9 +535,9 @@ FB_STUDY = {
          "and that is one more thing the mind has to hold."),
     ],
     "who_intro": ("Para times que vivem de pedido e prazo: comunicação, marketing, criação, agências e estúdios que "
-                  "atendem várias marcas ao mesmo tempo. O produto tem dois lados, e uma pessoa que pode estar em qualquer um deles.",
+                  "atendem vários clientes ou áreas ao mesmo tempo. O produto tem dois lados, e uma pessoa que pode estar em qualquer um deles.",
                   "For teams that live by requests and deadlines: communications, marketing, creative, agencies and "
-                  "studios serving several brands at once. The product has two sides, and one person who can be on either of them."),
+                  "studios serving several clients or departments at once. The product has two sides, and one person who can be on either of them."),
     "who": [
         (("Quem pede", "Requesters"),
          ("Quer abrir o pedido em poucos campos e acompanhar o andamento sem mandar mensagem perguntando.",
