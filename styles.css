@@ -655,15 +655,57 @@ em { font-style: italic; }
 .who-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .who-card { background: #fbf9f4; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
 .who-card figure { margin: 0; aspect-ratio: 4 / 3; border-bottom: 1px solid var(--line); background: #f6f4ef; overflow: hidden; }
-.who-card img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
-.who-card:hover img { transform: scale(1.04); }
+.who-card img { display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(var(--z, 1)); transition: transform .5s; }
+.who-card:hover img { transform: scale(calc(var(--z, 1) * 1.05)); }
 .who-card div { padding: 18px 20px 22px; }
 .who-card b { display: block; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.2vw, 30px); line-height: 1.1; margin-bottom: 8px; }
 .who-card p { margin: 0 !important; font-size: 16px !important; color: var(--ink-2); }
 @media (max-width: 900px) { .who-cards { grid-template-columns: 1fr; } .who-card figure { aspect-ratio: 16 / 10; } }
 @media (max-width: 640px) {
   .study-stats--viz li { flex-direction: row; align-items: center; justify-content: flex-start; gap: 16px; }
-  .viz-ring { width: 92px; }
+  .viz-ring { width: 92px; flex: none; }
+  .study-stats--viz .viz-ring b { font-size: 26px; }
   .viz-dots { grid-template-columns: repeat(7, 9px); gap: 5px; }
   .viz-dots i { width: 9px; height: 9px; }
 }
+
+/* Estudo do FlowBoard: O processo como linha do tempo com status do produto */
+.pill { display: inline-block; font-style: normal; font-size: 11px; font-weight: 600; letter-spacing: .02em; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.pill--done { background: #d1fae5; color: #047857; }
+.pill--doing { background: #e0f2fe; color: #0369a1; }
+.pill--ongoing { background: #ffedd5; color: #9a3412; }
+.proc-bar { display: flex; align-items: center; gap: 14px; margin: 28px 0 8px; font-size: 14px; color: var(--ink-2); }
+.proc-bar i { position: relative; flex: 1; max-width: 260px; height: 6px; border-radius: 3px; background: var(--paper-2); overflow: hidden; }
+.proc-bar i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--v); background: #10b981; border-radius: 3px; }
+.proc-bar b { font-weight: 600; color: var(--ink); }
+.study-proc { position: relative; margin-top: 16px; }
+.study-proc::before { content: ""; position: absolute; left: 21px; top: 30px; bottom: 30px; width: 2px; background: var(--line); }
+.study-proc li { position: relative; grid-template-columns: 44px 1fr; column-gap: 18px; border-top: 0; padding: 12px 0; }
+.study-proc li::before {
+  grid-row: span 2; z-index: 1; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 18px; line-height: 1; background: var(--paper); border: 1.5px solid var(--line); color: var(--ink-2);
+}
+.study-proc li.is-done::before { background: #ecfdf5; border-color: #6ee7b7; color: #047857; }
+.study-proc li.is-doing::before { background: #f0f9ff; border-color: #38bdf8; color: #0369a1; box-shadow: 0 0 0 5px rgba(56, 189, 248, .18); }
+.study-proc li.is-ongoing::before { background: #fff7ed; border: 1.5px dashed #fb923c; color: #9a3412; }
+.study-proc__t { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding-top: 9px; margin-bottom: 4px; }
+.study-proc__t b { margin: 0; }
+
+/* Estudo do FlowBoard: O que aprendi */
+.study-learn { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.study-learn li { background: #fbf9f4; border: 1px solid var(--line); border-radius: 10px; padding: 22px 24px 26px; }
+.learn-n { display: block; font-family: var(--serif); font-size: 44px; line-height: 1; color: var(--accent); margin-bottom: 14px; }
+.study-learn b { display: block; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.2vw, 30px); line-height: 1.12; margin-bottom: 10px; }
+.study-learn p { margin: 0 !important; font-size: 16px !important; color: var(--ink-2); }
+.study-learn li:first-child { background: var(--case); border-color: var(--case); color: #f4f1ea; }
+.study-learn li:first-child p { color: #d9d3c6; }
+.study-learn li:first-child .learn-n { color: var(--highlight); }
+.study-next { position: relative; max-width: 560px; margin-top: 32px !important; padding: 18px 20px 20px; background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 14px 34px -22px rgba(23, 21, 15, .4); font-size: 16px !important; }
+.study-next__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.study-next__bar { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-2); }
+.study-next__bar i { width: 56px; height: 5px; border-radius: 3px; background: var(--paper-2); }
+.study-next ul { list-style: none; margin: 0; padding: 0; }
+.study-next li { display: flex; align-items: center; gap: 12px; padding: 9px 0; border-top: 1px solid #efeae0; font-size: 16px; }
+.study-next li i { flex: none; width: 18px; height: 18px; border: 1.5px solid #b9b1a2; border-radius: 5px; }
+.study-next .hand { position: absolute; right: -8px; bottom: -34px; margin: 0 !important; font-size: 24px !important; color: var(--accent); transform: rotate(-4deg); }
+@media (max-width: 900px) { .study-learn { grid-template-columns: 1fr; } .study-next .hand { right: 8px; } }

@@ -545,9 +545,9 @@ FB_STUDY = {
                   "For teams that live by requests and deadlines: communications, marketing, creative, agencies and "
                   "studios serving several clients or departments at once. The product has two sides, and one person who can be on either of them."),
     "who_note": ("a mesma pessoa pode ser as três", "one person can be all three"),
-    "who_imgs": [("fb-avisos.webp", "left top", ("Demanda aberta com status, aprovador e comentários", "Open task with status, approver and comments")),
-                 ("fb-daily.webp", "40% 30%", ("Daily da semana, com o que fazer em cada dia", "Weekly daily, with what to do each day")),
-                 ("fb-foco.webp", "center 8%", ("Configurações de foco e bem-estar no celular", "Focus and wellbeing settings on mobile"))],
+    "who_imgs": [("fb-who-pede.webp", "1;50% 50%", ("Demanda aberta com status, aprovador e comentários", "Open task with status, approver and comments")),
+                 ("fb-who-atende.webp", "1;50% 50%", ("Daily da semana, com o que fazer em cada dia", "Weekly daily, with what to do each day")),
+                 ("fb-who-foco.webp", "1;50% 50%", ("Configurações de foco e bem-estar no celular", "Focus and wellbeing settings on mobile"))],
     "who": [
         (("Quem pede", "Requesters"),
          ("Quer abrir o pedido em poucos campos e acompanhar o andamento sem mandar mensagem perguntando.",
@@ -676,6 +676,9 @@ FB_STUDY = {
           "With Figma variables mirroring the code, every design decision comes with a known cost. That pushed me to decide "
           "early and to think twice before every new screen.")),
     ],
+    "next_items": [("Rodar o teste de usabilidade com cinco pessoas", "Run the usability test with five people"),
+                   ("Levar o tempo parado para o próprio cartão", "Bring time-stuck onto the card itself"),
+                   ("Transformar a prioridade numa regra que todo o time enxerga", "Turn priority into a rule the whole team can see")],
     "next_steps": ("Próximos passos: rodar o teste com cinco pessoas, levar o tempo parado para o cartão e transformar a "
                    "prioridade numa regra que todo o time enxergue, não numa escolha de quem atende.",
                    "Next steps: run the test with five people, bring time-stuck onto the card and turn priority into a rule "
@@ -717,7 +720,7 @@ def fb_study_page():
     who = ""
     for (t, d), (src, pos, alt) in zip(s["who"], s["who_imgs"]):
         who += (f'<li class="who-card"><figure class="zoom">{img(p, src, alt)}</figure>'
-                f'<div><b>{e(t)}</b><p>{e(d)}</p></div></li>').replace('<img ', f'<img style="object-position:{pos}" ', 1)
+                f'<div><b>{e(t)}</b><p>{e(d)}</p></div></li>').replace('<img ', '<img style="--z:{0};transform-origin:{1};object-position:{1}" '.format(*pos.split(";")), 1)
     decisions = ""
     for n, d in enumerate(s["decisions"], 1):
         figs = "".join(fig(p, k, src, a) for k, src, a in d["figs"])
@@ -726,10 +729,18 @@ def fb_study_page():
         <div class="step__text"><span class="step__n">{n:02d}</span><h3 class="step__t">{e(d['t'])}</h3>{paras(d['text'])}</div>
         <div class="cf-grid">{figs}</div>
       </div>"""
-    proc = "".join(f'<li><b>{e(t)}</b><p>{e(d)}</p></li>' for t, d in s["process"])
-    facts = "".join(f'<li><b>{n}</b><span>{e(t)}</span></li>' for n, t in s["facts"])
+    pst = ["done"] * 5 + ["doing", "ongoing"]
+    plabel = {"done": ("Concluído", "Done"), "doing": ("Em andamento", "In progress"), "ongoing": ("Contínuo", "Ongoing")}
+    proc = "".join(f'<li class="is-{st}"><div class="study-proc__t"><b>{e(t)}</b><em class="pill pill--{st}">{e(plabel[st])}</em></div><p>{e(d)}</p></li>'
+                   for (t, d), st in zip(s["process"], pst))
+    ndone = pst.count("done")
+    proc_bar = (f'<div class="proc-bar"><span>{e(("Etapas do processo", "Process steps"))}</span>'
+                f'<i style="--v:{ndone / len(pst) * 100:.0f}%"></i><b>{ndone}/{len(pst)}</b></div>')
+    facts = "".join(f'<li><b data-to="{n.lstrip("+")}" data-pre="{"+" if n.startswith("+") else ""}">{n}</b><span>{e(t)}</span></li>' for n, t in s["facts"])
     gallery = "".join(fig(p, k, src, a, u) for k, src, a, u in s["gallery"])
-    learn = "".join(f'<li><b>{e(t)}</b><p>{e(d)}</p></li>' for t, d in s["learn"])
+    learn = "".join(f'<li><span class="learn-n">{k:02d}</span><b>{e(t)}</b><p>{e(d)}</p></li>' for k, (t, d) in enumerate(s["learn"], 1))
+    nitems = "".join(f'<li><i aria-hidden="true"></i>{e(x)}</li>' for x in s["next_items"])
+    nlen = len(s["next_items"])
     nxt = CASES[1]
     path = ("" if LANG == "pt" else "en/") + "flowboard/"
     alt_path = ("en/" if LANG == "pt" else "") + "flowboard/"
@@ -807,6 +818,7 @@ def fb_study_page():
   <section class="wrap cs">
     <h2 class="cs__h">{e(UI['process'])}</h2>
     <div class="cs__body">{paras(s['process_intro'])}
+      {proc_bar}
       <ol class="study-proc">{proc}</ol>
     </div>
   </section>
@@ -825,9 +837,11 @@ def fb_study_page():
 
   <section class="wrap cs">
     <h2 class="cs__h">{e(('O que aprendi', 'What I learned'))}</h2>
-    <div class="cs__body">
-      <ul class="study-list study-list--learn">{learn}</ul>
-      <p class="study-next">{e(s['next_steps'])}</p>
+    <div class="cs__body cs__body--wide">
+      <ul class="study-learn">{learn}</ul>
+      <div class="study-next"><div class="study-next__head"><span class="pill pill--doing">{e(("Próximos passos", "Next steps"))}</span><span class="study-next__bar"><i></i><b>0/{nlen}</b></span></div>
+        <ul>{nitems}</ul>
+        <p class="hand" aria-hidden="true">{e(("o estudo continua", "the study goes on"))}</p></div>
     </div>
   </section>
 

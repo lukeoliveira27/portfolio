@@ -127,3 +127,23 @@ document.querySelectorAll('.study-stats--viz').forEach((el) => {
   }, { threshold: 0.5 });
   io.observe(el);
 });
+
+// Estudo do FlowBoard: "Em números" conta a partir de zero quando aparece
+document.querySelectorAll('.facts b[data-to]').forEach((el) => {
+  const to = parseInt(el.dataset.to, 10);
+  if (calm || !to) return;
+  const pre = el.dataset.pre || '';
+  el.textContent = pre + '0';
+  const io = new IntersectionObserver(([en]) => {
+    if (!en.isIntersecting) return;
+    io.disconnect();
+    const t0 = performance.now(), dur = 1100;
+    const step = (t) => {
+      const k = Math.min(1, (t - t0) / dur), ease = 1 - Math.pow(1 - k, 3);
+      el.textContent = pre + Math.round(to * ease);
+      if (k < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, { threshold: 0.6 });
+  io.observe(el);
+});
