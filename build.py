@@ -697,6 +697,9 @@ def fb_study_page():
     alt_path = ("en/" if LANG == "pt" else "") + "flowboard/"
     switch = "../en/flowboard/" if LANG == "pt" else "../../flowboard/"
 
+    t_head, t_last = e(s["statement"]).rsplit(" ", 1)
+    title_html = f'{t_head} <em class="study-mark">{t_last[:-1]}</em>{t_last[-1]}'
+
     out = head(p, L(("FlowBoard: estudo de caso · Lucas Oliveira", "FlowBoard: case study · Lucas Oliveira")),
                L(s["lead"])[:155], path, alt_path)
     out += f"""
@@ -704,25 +707,35 @@ def fb_study_page():
 {nav(p, home).replace('{LANG_SWITCH}', switch)}
 
 <main id="topo">
-  <header class="ch wrap">
+  <header class="ch wrap study-hero">
     <a class="ch__back" href="{home}#trabalhos">← {e(UI['back'])}</a>
-    <p class="eyebrow">{e(('FlowBoard · Estudo de caso', 'FlowBoard · Case study'))}</p>
-    <h1 class="ch__title ch__title--long">{e(s['statement'])}</h1>
-    <p class="ch__lead">{e(s['lead'])}</p>
-    <dl class="ch__meta">
-      <div><dt>{e(UI['role'])}</dt><dd>{e(s['role'])}</dd></div>
-      <div><dt>{e(('Período', 'Timeline'))}</dt><dd>{e(s['period'])}</dd></div>
-      <div><dt>{e(UI['tools'])}</dt><dd>{e(s['tools'])}</dd></div>
-    </dl>
-    <div class="case__links"><a class="link" href="{FB_URL}" target="_blank" rel="noopener">{e(('Conhecer o FlowBoard', 'Visit FlowBoard'))} ↗</a><a class="link link--muted" href="../cases/flowboard.html">{e(('Ver o resumo do projeto', 'See the project summary'))}</a></div>
+    <div class="study-hero__grid">
+      <div class="study-hero__text">
+        <p class="eyebrow">{e(('FlowBoard · Estudo de caso', 'FlowBoard · Case study'))}</p>
+        <h1 class="ch__title ch__title--long">{title_html}</h1>
+        <p class="ch__lead">{e(s['lead'])}</p>
+      </div>
+      <div class="study-hero__visual">
+        <figure class="fbm fbm--board study-hero__app">{browser('useflowboard.com/app')}{video(p, 'fb-board', ('Animação do board do FlowBoard: uma demanda passa de Iniciar para Em andamento, Em aprovação e Concluído, o progresso sobe de 0/4 para 4/4 e aparece o aviso de que ela foi concluída', 'FlowBoard board animation: a task moves from To do to In progress, In review and Done, its progress goes from 0/4 to 4/4 and a notice says it is done'), ' width="1936" height="1152"')}</figure>
+        <figure class="study-hero__phone">{img(p, 'fb-mob-board.webp', ('Board do FlowBoard no celular', 'FlowBoard board on mobile'), ' loading="eager"')}</figure>
+        <p class="hand study-hero__note study-hero__note--top" aria-hidden="true">{e(('do pedido ao concluído', 'from request to done'))}<svg viewBox="0 0 60 40"><path d="M4 6 C 26 4, 44 12, 52 32 M 44 28 L 52 33 L 56 24"/></svg></p>
+        <p class="hand study-hero__note study-hero__note--phone" aria-hidden="true">{e(('e no celular também', 'and on your phone too'))}<svg viewBox="0 0 60 40"><path d="M4 10 C 22 30, 40 32, 54 22 M 46 20 L 55 21 L 51 30"/></svg></p>
+      </div>
+      <div class="study-hero__info">
+        <dl class="ch__meta">
+          <div><dt>{e(UI['role'])}</dt><dd>{e(s['role'])}</dd></div>
+          <div><dt>{e(('Período', 'Timeline'))}</dt><dd>{e(s['period'])}</dd></div>
+          <div><dt>{e(UI['tools'])}</dt><dd>{e(s['tools'])}</dd></div>
+        </dl>
+        <div class="case__links"><a class="link" href="{FB_URL}" target="_blank" rel="noopener">{e(('Conhecer o FlowBoard', 'Visit FlowBoard'))} ↗</a><a class="link link--muted" href="../cases/flowboard.html">{e(('Ver o resumo do projeto', 'See the project summary'))}</a></div>
+      </div>
+    </div>
   </header>
-
-  <div class="ch__cover"><figure class="motion motion--board">{video(p, 'fb-board', ('Animação do board do FlowBoard: uma demanda passa de Iniciar para Em andamento, Em aprovação e Concluído, o progresso sobe de 0/4 para 4/4 e aparece o aviso de que ela foi concluída', 'FlowBoard board animation: a task moves from To do to In progress, In review and Done, its progress goes from 0/4 to 4/4 and a notice says it is done'), ' width="1936" height="1152"')}</figure></div>
 
   <section class="wrap cs">
     <h2 class="cs__h">{e(('A origem', 'The origin'))}</h2>
     <div class="cs__body">{paras(s['origin'])}
-      <figure class="motion motion--origin">{video(p, 'fb-origem', ('Animação: uma lista de pendências, um calendário com o prazo, um quadro improvisado, uma mensagem e um lembrete se juntam num único cartão do FlowBoard, com a frase Tudo num lugar só', 'Animation: a to-do list, a calendar with the deadline, a makeshift board, a message and a reminder come together into a single FlowBoard card, with the line All in one place'), ' width="1936" height="1152"')}</figure>
+      <figure class="fbm fbm--origin">{video(p, 'fb-origem', ('Animação: uma lista de pendências, um calendário com o prazo, um quadro improvisado, uma mensagem e um lembrete se juntam num único cartão do FlowBoard, com a frase Tudo num lugar só', 'Animation: a to-do list, a calendar with the deadline, a makeshift board, a message and a reminder come together into a single FlowBoard card, with the line All in one place'), ' width="1936" height="1152"')}</figure>
       <blockquote class="study-quote">{e(s['statement'])}</blockquote>
     </div>
   </section>

@@ -556,7 +556,53 @@ em { font-style: italic; }
 }
 
 /* Motions do estudo do FlowBoard (feitos no Figma, exportados em MP4) */
-.motion { margin: 0; border-radius: var(--radius); overflow: hidden; }
-.motion video { display: block; width: 100%; height: auto; aspect-ratio: 1936 / 1152; }
-.motion--board { background: #f6f4ef; box-shadow: 0 0 0 1px var(--line); }
-.motion--origin { margin: 32px 0 8px; background: var(--paper); }
+.fbm { margin: 0; border-radius: var(--radius); overflow: hidden; }
+.fbm video { display: block; width: 100%; height: auto; aspect-ratio: 1936 / 1152; }
+.fbm--board { background: #f6f4ef; box-shadow: 0 0 0 1px var(--line); }
+.fbm--origin { margin: 32px 0 8px; background: var(--paper); }
+
+/* Hero do estudo do FlowBoard: texto à esquerda, produto à direita */
+.study-hero__grid { display: grid; gap: 32px; }
+.study-hero .ch__lead { margin-bottom: 0; }
+.study-hero .ch__meta { margin-bottom: 28px; }
+.study-mark { position: relative; font-style: italic; color: var(--accent); white-space: nowrap; }
+.study-mark::after {
+  content: ""; position: absolute; left: -.04em; right: -.02em; bottom: .1em; height: .16em;
+  background: var(--highlight); z-index: -1; border-radius: 2px;
+}
+.study-hero__visual { position: relative; padding-top: 44px; padding-bottom: 28%; }
+.study-hero__app { position: relative; z-index: 1; box-shadow: 0 0 0 1px var(--line), 0 24px 60px -24px rgba(23, 21, 15, .28); }
+.study-hero__app .browser { background: #eceae4; }
+.study-hero__phone {
+  position: absolute; z-index: 2; right: -1%; bottom: 0; width: 21%; margin: 0;
+  border: 6px solid #111; border-radius: 26px; overflow: hidden; background: #111;
+  transform: rotate(4deg); box-shadow: 0 18px 40px -14px rgba(23, 21, 15, .45);
+}
+.study-hero__phone img { display: block; width: 100%; height: auto; border-radius: 19px; }
+.study-hero__note { position: absolute; margin: 0; font-size: clamp(20px, 1.9vw, 26px); line-height: 1; color: var(--accent); white-space: nowrap; }
+.study-hero__note svg { width: 46px; height: 31px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vertical-align: top; }
+.study-hero__note--top { top: 0; left: 6%; transform: rotate(-3deg); }
+.study-hero__note--top svg { margin: 12px 0 0 6px; }
+.study-hero__note--phone { bottom: 9%; right: 25%; transform: rotate(-2deg); }
+.study-hero__note--phone svg { margin: 4px 0 0 6px; }
+
+@media (min-width: 1000px) {
+  .study-hero__grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    grid-template-areas: "text visual" "info visual";
+    column-gap: clamp(40px, 5vw, 80px); row-gap: 40px; align-items: start;
+  }
+  .study-hero__text { grid-area: text; }
+  .study-hero__info { grid-area: info; }
+  .study-hero__visual { grid-area: visual; align-self: center; }
+  .study-hero .ch__title--long { font-size: clamp(44px, 5vw, 76px); }
+  .study-hero .ch__meta { grid-template-columns: 1fr; gap: 16px; }
+  .study-hero .ch__meta div { display: grid; grid-template-columns: 112px 1fr; gap: 16px; }
+  .study-hero .ch__meta dt { margin: 3px 0 0; }
+}
+@media (max-width: 640px) {
+  .study-hero__note { font-size: 19px; }
+  .study-hero__note svg { width: 34px; height: 23px; }
+  .study-hero__phone { border-width: 4px; border-radius: 18px; }
+  .study-hero__phone img { border-radius: 14px; }
+}
