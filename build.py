@@ -519,12 +519,18 @@ FB_STUDY = {
          "late, awaiting approval or stuck, someone has to ask."),
         ("Para não desenhar só a partir da minha experiência, fiz uma pesquisa de campo com 28 respondentes. Eu "
          "esperava ouvir sobre excesso de trabalho e distração. A maior dificuldade citada foi outra: depender de outra "
-         "pessoa e não saber em que pé a coisa está. Seis respostas descreveram alguma versão de “fico esperando e não sei se já foi feito”.",
+         "pessoa e não saber em que pé a coisa está.",
          "So I wouldn't design from my own experience alone, I ran a field survey with 28 respondents. I expected to "
          "hear about workload and distraction. The biggest difficulty they named was something else: depending on "
-         "someone else and not knowing where things stand. Six answers described some version of “I keep waiting and "
-         "don't know if it's done yet”."),
+         "someone else and not knowing where things stand."),
     ],
+    "channels": [(("E-mail", "Email"), ("“Re: Re: Fwd: arte de natal”", "“Re: Re: Fwd: holiday artwork”")),
+                 (("Mensagem", "Chat"), ("“consegue pra hoje?”", "“can you get it done today?”")),
+                 (("Reunião", "Meeting"), ("“anota aí que depois eu te mando”", "“write it down, I'll send it later”")),
+                 (("Corredor", "Hallway"), ("“lembra daquela peça que eu pedi?”", "“remember that piece I asked for?”"))],
+    "channels_note": ("e quem atende vira a memória de tudo", "and whoever handles it becomes the memory of it all"),
+    "pull": (("fico esperando e não sei se já foi feito", "I keep waiting and don't know if it's done yet"),
+             ("6 das 28 respostas descreveram alguma versão disso", "6 of the 28 answers described some version of this")),
     "stats": [("28", ("respondentes na pesquisa de campo", "field survey respondents")),
               ("50%", ("trabalham mais no remoto do que no presencial", "work more remotely than they did in the office")),
               ("43%", ("às vezes não conseguem desligar", "sometimes can't switch off"))],
@@ -538,6 +544,10 @@ FB_STUDY = {
                   "atendem vários clientes ou áreas ao mesmo tempo. O produto tem dois lados, e uma pessoa que pode estar em qualquer um deles.",
                   "For teams that live by requests and deadlines: communications, marketing, creative, agencies and "
                   "studios serving several clients or departments at once. The product has two sides, and one person who can be on either of them."),
+    "who_note": ("a mesma pessoa pode ser as três", "one person can be all three"),
+    "who_imgs": [("fb-avisos.webp", "left top", ("Demanda aberta com status, aprovador e comentários", "Open task with status, approver and comments")),
+                 ("fb-daily.webp", "40% 30%", ("Daily da semana, com o que fazer em cada dia", "Weekly daily, with what to do each day")),
+                 ("fb-foco.webp", "center 8%", ("Configurações de foco e bem-estar no celular", "Focus and wellbeing settings on mobile"))],
     "who": [
         (("Quem pede", "Requesters"),
          ("Quer abrir o pedido em poucos campos e acompanhar o andamento sem mandar mensagem perguntando.",
@@ -692,8 +702,22 @@ def fb_study_page():
     p = "../" if LANG == "pt" else "../../"
     home = "../"
     paras = lambda lst: "".join(f"<p>{e(x)}</p>" for x in lst)
-    stats = "".join(f'<li><b>{n}</b><span>{e(t)}</span></li>' for n, t in s["stats"])
-    who = "".join(f'<li><b>{e(t)}</b><p>{e(d)}</p></li>' for t, d in s["who"])
+    viz = []
+    for n, t in s["stats"]:
+        if n.endswith("%"):
+            v = f'<div class="viz-ring" style="--p:{n[:-1]}" aria-hidden="true"><b>{n}</b></div>'
+        else:
+            dots = '<i class="on"></i>' * 6 + "<i></i>" * (int(n) - 6)
+            v = f'<div class="viz-dots" aria-hidden="true">{dots}</div><b class="viz-num">{n}</b>'
+        viz.append(f'<li>{v}<span>{e(t)}</span></li>')
+    stats = "".join(viz)
+    dots_key = e(("em laranja, as 6 que falaram de espera", "in orange, the 6 who talked about waiting"))
+    chans = "".join(f'<li style="--r:{r}deg"><small>{e(k)}</small>{e(q)}</li>'
+                    for (k, q), r in zip(s["channels"], (-3, 2, -1.5, 3)))
+    who = ""
+    for (t, d), (src, pos, alt) in zip(s["who"], s["who_imgs"]):
+        who += (f'<li class="who-card"><figure class="zoom">{img(p, src, alt)}</figure>'
+                f'<div><b>{e(t)}</b><p>{e(d)}</p></div></li>').replace('<img ', f'<img style="object-position:{pos}" ', 1)
     decisions = ""
     for n, d in enumerate(s["decisions"], 1):
         figs = "".join(fig(p, k, src, a) for k, src, a in d["figs"])
@@ -756,16 +780,21 @@ def fb_study_page():
 
   <section class="wrap cs">
     <h2 class="cs__h">{e(('O problema', 'The problem'))}</h2>
-    <div class="cs__body">{paras(s['problem'])}
-      <ul class="study-stats">{stats}</ul>
+    <div class="cs__body"><p>{e(s['problem'][0])}</p>
+      <div class="study-chans"><ul>{chans}</ul><p class="hand study-chans__note" aria-hidden="true">{e(s['channels_note'])}<svg viewBox="0 0 60 40"><path d="M4 8 C 20 30, 38 34, 54 24 M 46 21 L 55 23 L 50 32"/></svg></p></div>
+      <p>{e(s['problem'][1])}</p>
+      <figure class="study-pull"><blockquote>“<span>{e(s['pull'][0])}</span>”</blockquote><figcaption>{e(s['pull'][1])}</figcaption></figure>
+      <ul class="study-stats study-stats--viz">{stats}</ul>
+      <p class="study-stats__key"><i></i>{dots_key}</p>
       {paras(s['problem_after'])}
     </div>
   </section>
 
   <section class="wrap cs">
     <h2 class="cs__h">{e(('Para quem é', 'Who it is for'))}</h2>
-    <div class="cs__body"><p>{e(s['who_intro'])}</p>
-      <ul class="study-list">{who}</ul>
+    <div class="cs__body cs__body--wide"><p class="study-who__intro">{e(s['who_intro'])}</p>
+      <p class="hand study-who__note" aria-hidden="true">{e(s['who_note'])}<svg viewBox="0 0 60 40"><path d="M6 6 C 20 8, 40 14, 48 34 M 40 29 L 48 35 L 53 26"/></svg></p>
+      <ul class="who-cards">{who}</ul>
     </div>
   </section>
 

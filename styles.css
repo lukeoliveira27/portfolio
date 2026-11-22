@@ -610,3 +610,60 @@ em { font-style: italic; }
   .study-hero__phone { border-width: 4px; border-radius: 18px; }
   .study-hero__phone img { border-radius: 14px; }
 }
+
+/* Estudo do FlowBoard: O problema */
+.study-chans { position: relative; margin: 28px 0 40px; }
+.study-chans ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 14px 12px; }
+.study-chans li {
+  background: #fff; border: 1px solid var(--line); border-radius: 16px 16px 16px 4px; padding: 10px 16px 12px;
+  font-size: 15px; line-height: 1.35; transform: rotate(var(--r)); box-shadow: 0 8px 20px -14px rgba(23, 21, 15, .35);
+}
+.study-chans small { display: block; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 2px; }
+.study-chans__note { margin: 18px 0 0 !important; text-align: right; font-size: clamp(21px, 2vw, 26px) !important; line-height: 1; color: var(--accent); transform: rotate(-2deg); }
+.study-chans__note svg, .study-who__note svg { width: 44px; height: 30px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vertical-align: top; margin: 2px 0 0 6px; }
+.study-pull { margin: 40px 0; padding-left: clamp(16px, 2vw, 28px); border-left: 3px solid var(--accent); }
+.study-pull blockquote { margin: 0 0 12px; font-family: var(--serif); font-size: clamp(30px, 3.4vw, 46px); line-height: 1.08; letter-spacing: -.01em; }
+.study-pull blockquote span { background: linear-gradient(transparent 62%, var(--highlight) 62%, var(--highlight) 88%, transparent 88%); }
+.study-pull figcaption { font-size: 14px; color: var(--ink-2); }
+.study-stats--viz { align-items: start; margin-bottom: 14px; }
+.study-stats--viz li { display: flex; flex-direction: column; gap: 12px; padding-top: 20px; }
+.viz-dots { align-content: start; }
+.study-stats--viz span { margin-top: 0; }
+.viz-dots { display: grid; grid-template-columns: repeat(7, 12px); gap: 6px; }
+.viz-dots i { width: 12px; height: 12px; border-radius: 50%; background: var(--case); transition: background .5s; }
+.viz-dots i.on { background: var(--accent); }
+.study-stats--viz .viz-num { font-size: 54px; line-height: 54px; height: 54px; }
+@property --fill { syntax: "<number>"; inherits: true; initial-value: 0; }
+.viz-ring { position: relative; width: 132px; aspect-ratio: 1; display: grid; place-items: center; --fill: var(--p); transition: --fill 1.6s cubic-bezier(.2, .7, .2, 1); }
+.viz-ring::before {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(var(--accent) calc(var(--fill) * 1%), var(--paper-2) 0);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 13px), #000 calc(100% - 12px));
+          mask: radial-gradient(farthest-side, transparent calc(100% - 13px), #000 calc(100% - 12px));
+}
+.study-stats--viz .viz-ring b { font-size: clamp(32px, 3vw, 40px); }
+.viz-wait .viz-ring { --fill: 0; }
+.viz-wait .viz-dots i, .viz-wait .viz-dots i.on { background: var(--line); }
+.viz-dots i.on:nth-child(2) { transition-delay: .1s; } .viz-dots i.on:nth-child(3) { transition-delay: .2s; }
+.viz-dots i.on:nth-child(4) { transition-delay: .3s; } .viz-dots i.on:nth-child(5) { transition-delay: .4s; } .viz-dots i.on:nth-child(6) { transition-delay: .5s; }
+.study-stats__key { display: flex; align-items: center; gap: 8px; font-size: 14px !important; color: var(--ink-2); margin-bottom: 32px !important; }
+.study-stats__key i { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex: none; }
+
+/* Estudo do FlowBoard: Para quem é */
+.study-who__intro { max-width: 68ch; }
+.study-who__note { margin: 8px 0 6px !important; text-align: right; font-size: clamp(21px, 2vw, 26px) !important; line-height: 1; color: var(--accent); transform: rotate(-2deg); }
+.who-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.who-card { background: #fbf9f4; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+.who-card figure { margin: 0; aspect-ratio: 4 / 3; border-bottom: 1px solid var(--line); background: #f6f4ef; overflow: hidden; }
+.who-card img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.who-card:hover img { transform: scale(1.04); }
+.who-card div { padding: 18px 20px 22px; }
+.who-card b { display: block; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.2vw, 30px); line-height: 1.1; margin-bottom: 8px; }
+.who-card p { margin: 0 !important; font-size: 16px !important; color: var(--ink-2); }
+@media (max-width: 900px) { .who-cards { grid-template-columns: 1fr; } .who-card figure { aspect-ratio: 16 / 10; } }
+@media (max-width: 640px) {
+  .study-stats--viz li { flex-direction: row; align-items: center; justify-content: flex-start; gap: 16px; }
+  .viz-ring { width: 92px; }
+  .viz-dots { grid-template-columns: repeat(7, 9px); gap: 5px; }
+  .viz-dots i { width: 9px; height: 9px; }
+}

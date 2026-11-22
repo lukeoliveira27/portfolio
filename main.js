@@ -117,3 +117,13 @@ tabs.forEach((t, i) => {
   });
 });
 if (tabs.length) select(tabs[0]);
+
+// Estudo do FlowBoard: os números enchem quando aparecem na tela
+document.querySelectorAll('.study-stats--viz').forEach((el) => {
+  if (calm) return;
+  el.classList.add('viz-wait');
+  const io = new IntersectionObserver(([en]) => {
+    if (en.isIntersecting) { el.classList.remove('viz-wait'); io.disconnect(); }
+  }, { threshold: 0.5 });
+  io.observe(el);
+});
