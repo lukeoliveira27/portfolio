@@ -914,8 +914,8 @@ def case_intro(c, i, p, case_href):
 
 TIMELINE = [
     ("2025", ("hoje", "now"), ("Analista de Criação Pleno", "Mid-level Creative Analyst"), "Talenses Group",
-     ("Branding e comunicação das marcas do grupo, sites, landing pages, editorial e edição do podcast C-Talks.",
-      "Branding and communication for the group’s brands, websites, landing pages, editorial and editing the C-Talks podcast.")),
+     ("Branding e comunicação de várias marcas, sites, landing pages, editorial e edição do podcast C-Talks.",
+      "Branding and communication for several brands, websites, landing pages, editorial and editing the C-Talks podcast.")),
     ("2023", "2025", ("Analista de Criação Júnior", "Junior Creative Analyst"), "Sat",
      ("UI de landing pages e do novo blog, peças, vídeos e motions, mídia paga e e-mail marketing.",
       "UI for landing pages and the new blog, design, video and motion, paid media and email marketing.")),
@@ -962,12 +962,13 @@ def home():
     hero_title = (
         f'Eu desenho <em>marcas</em>, <em>sites</em><br class="br-lg"> e coisas que {wiggle("se mexem")}.',
         f'I design <em>brands</em>, <em>websites</em><br class="br-lg"> and things that {wiggle("move")}.')
-    lead = ("Sou o Lucas e trabalho com design desde 2017, quando tinha 16 anos. Hoje cuido da comunicação visual do ecossistema Talenses Group: de "
+    lead = ("Sou o Lucas e trabalho com design desde 2017, quando tinha 16 anos. Hoje cuido da comunicação visual de várias marcas ao mesmo tempo: de "
             "identidade de evento a landing page bilíngue, de book impresso a motion para mídia. E nas horas vagas, criei um produto.",
-            "I'm Lucas, from São Paulo, and I've worked in design since 2017, when I was 16. I look after the visual communication of the Talenses Group "
-            "ecosystem: from event identities to bilingual landing pages, printed books to media motion. On the side, I built a product.")
-    brands = ["Talenses Group", "Talenses Executive", "Mappit", "Assigna", "Moove", "Samsung", "UBS", "LiveMode", "Insper", "FTI Consulting"]
-    marquee = "".join(f"<span>{b}</span>" for b in brands) + "".join(f'<span aria-hidden="true">{b}</span>' for b in brands)
+            "I'm Lucas, from São Paulo, and I've worked in design since 2017, when I was 16. I look after the visual communication of "
+            "several brands at once: from event identities to bilingual landing pages, printed books to media motion. On the side, I built a product.")
+    brands = ["Mappit", "Assigna", "Moove", "Samsung", "UBS", "LiveMode", "Insper", "FTI Consulting"]
+    # Cada metade da faixa leva a lista duas vezes, para não sobrar buraco em tela larga (a animação anda 50%).
+    marquee = "".join(f"<span>{b}</span>" for b in brands) + "".join(f'<span aria-hidden="true">{b}</span>' for b in brands * 3)
 
     cases_html = ""
     for i, c in enumerate(CASES, 1):
@@ -983,7 +984,7 @@ def home():
     reel = [
         ("moove-motion", ("Summer Job Moove", "Summer Job Moove"), ("Motion para redes", "Social motion")),
         ("bc-loop", ("Board Circle", "Board Circle"), ("Loop de telão do evento", "Event screen loop")),
-        ("radar-header", ("Radar TG", "Radar TG"), ("Header animado de newsletter", "Animated newsletter header")),
+        ("radar-header", ("Radar", "Radar"), ("Header animado de newsletter", "Animated newsletter header")),
     ]
     reel_html = "".join(f"""
           <figure>
@@ -1086,15 +1087,15 @@ def home():
             <figcaption><b>Showreel 2026</b> {e(('Summer Job Moove e Board Circle · 30s', 'Summer Job Moove and Board Circle · 30s'))}</figcaption>
           </figure>{reel_html}
           <figure class="m-gif">
-            {img(p, 'exame-retangulo.gif', ('Banner animado Talenses Group para a Exame', 'Talenses Group animated banner for Exame'))}
-            <figcaption><b>Talenses Group × Exame</b> {e(('Banners animados de mídia', 'Animated media banners'))}</figcaption>
+            {img(p, 'exame-retangulo.gif', ('Banner animado para a Exame', 'Animated banner for Exame'))}
+            <figcaption><b>Exame</b> {e(('Banners animados de mídia', 'Animated media banners'))}</figcaption>
           </figure>
         </div>
       </div>
 
       <div id="panel-pod" role="tabpanel" aria-labelledby="tab-pod">
         <div class="pod__head">
-          <p class="pod__text">{e(('Edito os episódios do C-Talks, o videocast do Talenses Group com executivos e lideranças, e os cortes para as redes.', 'I edit C-Talks, Talenses Group’s videocast with executives and business leaders, plus the short cuts for social.'))}</p>
+          <p class="pod__text">{e(('Edito os episódios do C-Talks, um videocast com executivos e lideranças, e os cortes para as redes.', 'I edit C-Talks, a videocast with executives and business leaders, plus the short cuts for social.'))}</p>
           <a class="link pod__all" href="{CTALKS}" target="_blank" rel="noopener">{e(('Ver todos no YouTube', 'Watch all on YouTube'))} ↗</a>
         </div>
         <div class="pod__grid">{pod_html}
@@ -1115,8 +1116,8 @@ def home():
   <section id="sobre" class="wrap section about">
     <div class="about__text">
       <h2 class="section__title">{e(('Curioso por natureza, detalhista por teimosia.', 'Curious by nature, detail-obsessed by choice.'))}</h2>
-      <p>{e(('Sou de São Bernardo do Campo e trabalho como Creative Analyst no Talenses Group, onde atendo um ecossistema inteiro de marcas: Talenses, Talenses Executive, Mappit, Assigna, WEDO, Landtech e o Instituto TG. Isso me fez transitar fácil entre branding, editorial, web e vídeo, muitas vezes no mesmo dia.',
-             'I’m from São Bernardo do Campo and work as a Creative Analyst at Talenses Group, serving a whole ecosystem of brands: Talenses, Talenses Executive, Mappit, Assigna, WEDO, Landtech and Instituto TG. That has me moving between branding, editorial, web and video, often on the same day.'))}</p>
+      <p>{e(('Sou de São Bernardo do Campo e trabalho como Creative Analyst para marcas de setores bem diferentes. Isso me fez transitar fácil entre branding, editorial, web e vídeo, muitas vezes no mesmo dia.',
+             'I’m from São Bernardo do Campo and work as a Creative Analyst for brands in very different sectors. That has me moving between branding, editorial, web and video, often on the same day.'))}</p>
       <p>{e(('Fora do trabalho, divido a rotina com o Eddie (que aparece pra pedir carinho no meio das criações) e jogo videogame. Zelda é o favorito, pela forma como tudo nele é pensado nos mínimos detalhes. Tento levar isso pro que eu faço.',
              'Outside work I share my days with Eddie (who shows up for cuddles mid-project) and play video games. Zelda is my favourite, for how every tiny detail is thought through. I try to bring that into what I make.'))}</p>
       <div class="about__photos" aria-hidden="true">
