@@ -460,6 +460,9 @@ em { font-style: italic; }
 .post__stats .ico { width: 16px; height: 16px; color: #5e5e5e; margin-right: 3px; }
 .foot__made { display: inline-flex; align-items: center; gap: 8px; }
 .foot__made .ico { width: 22px; height: 22px; color: var(--ink-2); }
+.tools { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.tools li { display: inline-flex; align-items: center; gap: 7px; }
+.tools .ico { width: 15px; height: 15px; vertical-align: 0; color: var(--ink-2); }
 
 /* ---------- AJUSTES DE CELULAR ---------- */
 .car__count { display: none; }

@@ -673,6 +673,20 @@ FB_STUDY = {
 }
 
 
+# Logos das ferramentas (Simple Icons, CC0). A cor vem do texto, como os outros ícones.
+TOOL_ICONS = {"Figma": "figma", "Maze": "maze", "React": "react", "TypeScript": "typescript", "Replit": "replit"}
+
+
+def tools_list(p, text):
+    """Lista de ferramentas com o logo de cada uma antes do nome."""
+    items = []
+    for t in text.split(" · "):
+        ico = TOOL_ICONS.get(t)
+        mark = f'<i class="ico" style="--i:url({p}assets/icons/{ico}.svg)" aria-hidden="true"></i>' if ico else ""
+        items.append(f"<li>{mark}{e(t)}</li>")
+    return f'<ul class="tools">{"".join(items)}</ul>'
+
+
 def fb_study_page():
     s = FB_STUDY
     p = "../" if LANG == "pt" else "../../"
@@ -725,7 +739,7 @@ def fb_study_page():
         <dl class="ch__meta">
           <div><dt>{e(UI['role'])}</dt><dd>{e(s['role'])}</dd></div>
           <div><dt>{e(('Período', 'Timeline'))}</dt><dd>{e(s['period'])}</dd></div>
-          <div><dt>{e(UI['tools'])}</dt><dd>{e(s['tools'])}</dd></div>
+          <div><dt>{e(UI['tools'])}</dt><dd>{tools_list(p, s['tools'])}</dd></div>
         </dl>
         <div class="case__links"><a class="link" href="{FB_URL}" target="_blank" rel="noopener">{e(('Conhecer o FlowBoard', 'Visit FlowBoard'))} ↗</a><a class="link link--muted" href="../cases/flowboard.html">{e(('Ver o resumo do projeto', 'See the project summary'))}</a></div>
       </div>
