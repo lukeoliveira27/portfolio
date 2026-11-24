@@ -708,10 +708,10 @@ def fb_study_page():
     viz = []
     for n, t in s["stats"]:
         if n.endswith("%"):
-            v = f'<div class="viz-ring" style="--p:{n[:-1]}" aria-hidden="true"><b>{n}</b></div>'
+            v = f'<div class="viz-ring" style="--p:{n[:-1]}" aria-hidden="true"><b data-to="{n[:-1]}" data-suf="%">{n}</b></div>'
         else:
             dots = '<i class="on"></i>' * 6 + "<i></i>" * (int(n) - 6)
-            v = f'<div class="viz-dots" aria-hidden="true">{dots}</div><b class="viz-num">{n}</b>'
+            v = f'<div class="viz-dots" aria-hidden="true">{dots}</div><b class="viz-num" data-to="{n}">{n}</b>'
         viz.append(f'<li>{v}<span>{e(t)}</span></li>')
     stats = "".join(viz)
     dots_key = e(("em laranja, as 6 que falaram de espera", "in orange, the 6 who talked about waiting"))
