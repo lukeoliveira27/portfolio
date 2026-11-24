@@ -434,6 +434,10 @@ em { font-style: italic; }
 .facts li { border-top: 1px solid rgba(255,255,255,.25); padding-top: 16px; }
 .facts b { display: block; font-family: var(--serif); font-weight: 400; font-size: clamp(44px, 5vw, 72px); line-height: 1; }
 .facts span { font-size: 14px; color: #cfc8b9; }
+@media (min-width: 1100px) {
+  .facts li { display: flex; align-items: flex-start; gap: 15px; }
+  .facts span { margin-top: 9px; min-width: 6em; }
+}
 @media (max-width: 860px) {
   .cs-result .wrap { grid-template-columns: 1fr; }
   .facts { grid-column: auto; grid-template-columns: repeat(2, 1fr); }
