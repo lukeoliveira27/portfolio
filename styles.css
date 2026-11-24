@@ -451,9 +451,10 @@ em { font-style: italic; }
 
 
 /* ---------- ÍCONES (Flaticon, traço à mão; a cor vem do texto) ---------- */
+/* A imagem vai inline no HTML (mask-image), para o caminho valer a partir da página e não deste arquivo. */
 .ico {
   display: inline-block; width: 1em; height: 1em; vertical-align: -.12em; background: currentColor;
-  -webkit-mask: var(--i) center / contain no-repeat; mask: var(--i) center / contain no-repeat;
+  -webkit-mask: center / contain no-repeat; mask: center / contain no-repeat;
 }
 .ico--wave { width: 1.15em; height: 1.15em; transform-origin: 70% 80%; animation: wave 1.6s ease-in-out .4s 2; }
 @keyframes wave { 0%, 60%, 100% { transform: rotate(0); } 10%, 30% { transform: rotate(16deg); } 20%, 40% { transform: rotate(-8deg); } }

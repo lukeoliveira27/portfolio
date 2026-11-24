@@ -124,7 +124,7 @@ def head(prefix, title, desc, canonical_path, alt_path):
 def foot(prefix):
     return f"""<footer class="foot wrap">
   <span>© 2026 Lucas Oliveira</span>
-  <span class="hand foot__made"><i class="ico" style="--i:url({prefix}assets/icons/cafe.png)" aria-hidden="true"></i>{e(UI['made'])}</span>
+  <span class="hand foot__made"><i class="ico" style="-webkit-mask-image:url({prefix}assets/icons/cafe.png);mask-image:url({prefix}assets/icons/cafe.png)" aria-hidden="true"></i>{e(UI['made'])}</span>
 </footer>
 
 <dialog class="lightbox" aria-label="{e(UI['zoom'])}">
@@ -682,7 +682,7 @@ def tools_list(p, text):
     items = []
     for t in text.split(" · "):
         ico = TOOL_ICONS.get(t)
-        mark = f'<i class="ico" style="--i:url({p}assets/icons/{ico}.svg)" aria-hidden="true"></i>' if ico else ""
+        mark = f'<i class="ico" style="-webkit-mask-image:url({p}assets/icons/{ico}.svg);mask-image:url({p}assets/icons/{ico}.svg)" aria-hidden="true"></i>' if ico else ""
         items.append(f"<li>{mark}{e(t)}</li>")
     return f'<ul class="tools">{"".join(items)}</ul>'
 
@@ -863,7 +863,7 @@ def bento(c, p):
             </header>
             <p class="post__text">{e(caption)}</p>
             <div class="zoom post__media">{img(p, 'moove-feed.webp', ('Post de feed: Construa seu futuro na Moove', 'Feed post: Build your future at Moove'))}</div>
-            <div class="post__stats" aria-hidden="true"><span><i class="ico" style="--i:url({p}assets/icons/curtir.png)"></i><i class="ico" style="--i:url({p}assets/icons/coracao.png)"></i><i class="ico" style="--i:url({p}assets/icons/palmas.png)"></i></span></div>
+            <div class="post__stats" aria-hidden="true"><span><i class="ico" style="-webkit-mask-image:url({p}assets/icons/curtir.png);mask-image:url({p}assets/icons/curtir.png)"></i><i class="ico" style="-webkit-mask-image:url({p}assets/icons/coracao.png);mask-image:url({p}assets/icons/coracao.png)"></i><i class="ico" style="-webkit-mask-image:url({p}assets/icons/palmas.png);mask-image:url({p}assets/icons/palmas.png)"></i></span></div>
             <div class="post__actions">{''.join(f'<span>{e(a)}</span>' for a in acts)}</div>
           </div>
         </figure>"""
@@ -1053,7 +1053,7 @@ def home():
       <p class="hero__lead">{e(lead)}</p>
       <figure class="hero__photo">
         <img src="{p}assets/img/lucas.webp" alt="{e(('Lucas Oliveira sorrindo e fazendo sinal de paz', 'Lucas Oliveira smiling and making a peace sign'))}" width="800" height="800">
-        <figcaption class="hand">{e(('oi!', 'hi!'))} <i class="ico ico--wave" style="--i:url({p}assets/icons/aceno.png)" aria-hidden="true"></i></figcaption>
+        <figcaption class="hand">{e(('oi!', 'hi!'))} <i class="ico ico--wave" style="-webkit-mask-image:url({p}assets/icons/aceno.png);mask-image:url({p}assets/icons/aceno.png)" aria-hidden="true"></i></figcaption>
       </figure>
     </div>
   </section>
